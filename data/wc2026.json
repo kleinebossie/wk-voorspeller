@@ -1,0 +1,1187 @@
+{
+  "matches": [
+    {
+      "id": "1",
+      "stage": "Groep A",
+      "home_team": "Mexico",
+      "away_team": "South Africa",
+      "date": "2026-06-11T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": true,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "2",
+      "stage": "Groep A",
+      "home_team": "South Korea",
+      "away_team": "Czechia",
+      "date": "2026-06-11T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "3",
+      "stage": "Groep A",
+      "home_team": "Mexico",
+      "away_team": "South Korea",
+      "date": "2026-06-16T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "4",
+      "stage": "Groep A",
+      "home_team": "Czechia",
+      "away_team": "South Africa",
+      "date": "2026-06-16T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "5",
+      "stage": "Groep A",
+      "home_team": "Czechia",
+      "away_team": "Mexico",
+      "date": "2026-06-21T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "6",
+      "stage": "Groep A",
+      "home_team": "South Africa",
+      "away_team": "South Korea",
+      "date": "2026-06-21T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "7",
+      "stage": "Groep B",
+      "home_team": "Canada",
+      "away_team": "Bosnia and Herzegovina",
+      "date": "2026-06-12T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "8",
+      "stage": "Groep B",
+      "home_team": "Qatar",
+      "away_team": "Switzerland",
+      "date": "2026-06-12T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "9",
+      "stage": "Groep B",
+      "home_team": "Canada",
+      "away_team": "Qatar",
+      "date": "2026-06-17T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "10",
+      "stage": "Groep B",
+      "home_team": "Switzerland",
+      "away_team": "Bosnia and Herzegovina",
+      "date": "2026-06-17T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "11",
+      "stage": "Groep B",
+      "home_team": "Switzerland",
+      "away_team": "Canada",
+      "date": "2026-06-22T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "12",
+      "stage": "Groep B",
+      "home_team": "Bosnia and Herzegovina",
+      "away_team": "Qatar",
+      "date": "2026-06-22T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "13",
+      "stage": "Groep C",
+      "home_team": "Brazil",
+      "away_team": "Morocco",
+      "date": "2026-06-13T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": true,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "14",
+      "stage": "Groep C",
+      "home_team": "Haiti",
+      "away_team": "Scotland",
+      "date": "2026-06-13T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "15",
+      "stage": "Groep C",
+      "home_team": "Brazil",
+      "away_team": "Haiti",
+      "date": "2026-06-18T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "16",
+      "stage": "Groep C",
+      "home_team": "Scotland",
+      "away_team": "Morocco",
+      "date": "2026-06-18T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "17",
+      "stage": "Groep C",
+      "home_team": "Scotland",
+      "away_team": "Brazil",
+      "date": "2026-06-23T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "18",
+      "stage": "Groep C",
+      "home_team": "Morocco",
+      "away_team": "Haiti",
+      "date": "2026-06-23T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "19",
+      "stage": "Groep D",
+      "home_team": "United States",
+      "away_team": "Paraguay",
+      "date": "2026-06-14T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "20",
+      "stage": "Groep D",
+      "home_team": "Australia",
+      "away_team": "Turkey",
+      "date": "2026-06-14T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "21",
+      "stage": "Groep D",
+      "home_team": "United States",
+      "away_team": "Australia",
+      "date": "2026-06-19T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "22",
+      "stage": "Groep D",
+      "home_team": "Turkey",
+      "away_team": "Paraguay",
+      "date": "2026-06-19T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "23",
+      "stage": "Groep D",
+      "home_team": "Turkey",
+      "away_team": "United States",
+      "date": "2026-06-24T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "24",
+      "stage": "Groep D",
+      "home_team": "Paraguay",
+      "away_team": "Australia",
+      "date": "2026-06-24T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "25",
+      "stage": "Groep E",
+      "home_team": "Germany",
+      "away_team": "Curacao",
+      "date": "2026-06-15T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": true,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "26",
+      "stage": "Groep E",
+      "home_team": "Ivory Coast",
+      "away_team": "Ecuador",
+      "date": "2026-06-15T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "27",
+      "stage": "Groep E",
+      "home_team": "Germany",
+      "away_team": "Ivory Coast",
+      "date": "2026-06-20T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "28",
+      "stage": "Groep E",
+      "home_team": "Ecuador",
+      "away_team": "Curacao",
+      "date": "2026-06-20T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "29",
+      "stage": "Groep E",
+      "home_team": "Ecuador",
+      "away_team": "Germany",
+      "date": "2026-06-25T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "30",
+      "stage": "Groep E",
+      "home_team": "Curacao",
+      "away_team": "Ivory Coast",
+      "date": "2026-06-25T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "31",
+      "stage": "Groep F",
+      "home_team": "Netherlands",
+      "away_team": "Japan",
+      "date": "2026-06-16T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "32",
+      "stage": "Groep F",
+      "home_team": "Sweden",
+      "away_team": "Tunisia",
+      "date": "2026-06-16T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "33",
+      "stage": "Groep F",
+      "home_team": "Netherlands",
+      "away_team": "Sweden",
+      "date": "2026-06-21T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "34",
+      "stage": "Groep F",
+      "home_team": "Tunisia",
+      "away_team": "Japan",
+      "date": "2026-06-21T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "35",
+      "stage": "Groep F",
+      "home_team": "Tunisia",
+      "away_team": "Netherlands",
+      "date": "2026-06-26T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "36",
+      "stage": "Groep F",
+      "home_team": "Japan",
+      "away_team": "Sweden",
+      "date": "2026-06-26T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "37",
+      "stage": "Groep G",
+      "home_team": "Belgium",
+      "away_team": "Egypt",
+      "date": "2026-06-11T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": true,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "38",
+      "stage": "Groep G",
+      "home_team": "Iran",
+      "away_team": "New Zealand",
+      "date": "2026-06-11T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "39",
+      "stage": "Groep G",
+      "home_team": "Belgium",
+      "away_team": "Iran",
+      "date": "2026-06-16T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "40",
+      "stage": "Groep G",
+      "home_team": "New Zealand",
+      "away_team": "Egypt",
+      "date": "2026-06-16T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "41",
+      "stage": "Groep G",
+      "home_team": "New Zealand",
+      "away_team": "Belgium",
+      "date": "2026-06-21T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "42",
+      "stage": "Groep G",
+      "home_team": "Egypt",
+      "away_team": "Iran",
+      "date": "2026-06-21T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "43",
+      "stage": "Groep H",
+      "home_team": "Spain",
+      "away_team": "Cape Verde",
+      "date": "2026-06-12T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "44",
+      "stage": "Groep H",
+      "home_team": "Saudi Arabia",
+      "away_team": "Uruguay",
+      "date": "2026-06-12T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "45",
+      "stage": "Groep H",
+      "home_team": "Spain",
+      "away_team": "Saudi Arabia",
+      "date": "2026-06-17T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "46",
+      "stage": "Groep H",
+      "home_team": "Uruguay",
+      "away_team": "Cape Verde",
+      "date": "2026-06-17T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "47",
+      "stage": "Groep H",
+      "home_team": "Uruguay",
+      "away_team": "Spain",
+      "date": "2026-06-22T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "48",
+      "stage": "Groep H",
+      "home_team": "Cape Verde",
+      "away_team": "Saudi Arabia",
+      "date": "2026-06-22T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "49",
+      "stage": "Groep I",
+      "home_team": "France",
+      "away_team": "Senegal",
+      "date": "2026-06-13T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": true,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "50",
+      "stage": "Groep I",
+      "home_team": "Iraq",
+      "away_team": "Norway",
+      "date": "2026-06-13T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "51",
+      "stage": "Groep I",
+      "home_team": "France",
+      "away_team": "Iraq",
+      "date": "2026-06-18T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "52",
+      "stage": "Groep I",
+      "home_team": "Norway",
+      "away_team": "Senegal",
+      "date": "2026-06-18T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "53",
+      "stage": "Groep I",
+      "home_team": "Norway",
+      "away_team": "France",
+      "date": "2026-06-23T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "54",
+      "stage": "Groep I",
+      "home_team": "Senegal",
+      "away_team": "Iraq",
+      "date": "2026-06-23T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "55",
+      "stage": "Groep J",
+      "home_team": "Argentina",
+      "away_team": "Algeria",
+      "date": "2026-06-14T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "56",
+      "stage": "Groep J",
+      "home_team": "Austria",
+      "away_team": "Jordan",
+      "date": "2026-06-14T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "57",
+      "stage": "Groep J",
+      "home_team": "Argentina",
+      "away_team": "Austria",
+      "date": "2026-06-19T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "58",
+      "stage": "Groep J",
+      "home_team": "Jordan",
+      "away_team": "Algeria",
+      "date": "2026-06-19T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "59",
+      "stage": "Groep J",
+      "home_team": "Jordan",
+      "away_team": "Argentina",
+      "date": "2026-06-24T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "60",
+      "stage": "Groep J",
+      "home_team": "Algeria",
+      "away_team": "Austria",
+      "date": "2026-06-24T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "61",
+      "stage": "Groep K",
+      "home_team": "Portugal",
+      "away_team": "DR Congo",
+      "date": "2026-06-15T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": true,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "62",
+      "stage": "Groep K",
+      "home_team": "Uzbekistan",
+      "away_team": "Colombia",
+      "date": "2026-06-15T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "63",
+      "stage": "Groep K",
+      "home_team": "Portugal",
+      "away_team": "Uzbekistan",
+      "date": "2026-06-20T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "64",
+      "stage": "Groep K",
+      "home_team": "Colombia",
+      "away_team": "DR Congo",
+      "date": "2026-06-20T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "65",
+      "stage": "Groep K",
+      "home_team": "Colombia",
+      "away_team": "Portugal",
+      "date": "2026-06-25T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "66",
+      "stage": "Groep K",
+      "home_team": "DR Congo",
+      "away_team": "Uzbekistan",
+      "date": "2026-06-25T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "67",
+      "stage": "Groep L",
+      "home_team": "England",
+      "away_team": "Croatia",
+      "date": "2026-06-16T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "68",
+      "stage": "Groep L",
+      "home_team": "Ghana",
+      "away_team": "Panama",
+      "date": "2026-06-16T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "69",
+      "stage": "Groep L",
+      "home_team": "England",
+      "away_team": "Ghana",
+      "date": "2026-06-21T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "70",
+      "stage": "Groep L",
+      "home_team": "Panama",
+      "away_team": "Croatia",
+      "date": "2026-06-21T18:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "71",
+      "stage": "Groep L",
+      "home_team": "Panama",
+      "away_team": "England",
+      "date": "2026-06-26T21:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    },
+    {
+      "id": "72",
+      "stage": "Groep L",
+      "home_team": "Croatia",
+      "away_team": "Ghana",
+      "date": "2026-06-26T15:00:00Z",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.2,
+        "away": 3.2
+      },
+      "actual_score": null,
+      "match_of_the_day": false,
+      "home_first_scorer": null,
+      "away_first_scorer": null
+    }
+  ],
+  "stats": {
+    "first_yellow_card_minute": null,
+    "first_red_card_minute": null,
+    "first_goal_minute": null,
+    "first_goal_scorer": null,
+    "topscorer": null,
+    "group_standings": {
+      "A": [],
+      "B": [],
+      "C": [],
+      "D": [],
+      "E": [],
+      "F": [],
+      "G": [],
+      "H": [],
+      "I": [],
+      "J": [],
+      "K": [],
+      "L": []
+    },
+    "knockout": {
+      "round_of_32": [],
+      "round_of_16": [],
+      "quarter_finals": [],
+      "semi_finals": [],
+      "third_place_match": [],
+      "finalists": [],
+      "champion": null,
+      "third_place": null
+    }
+  }
+}
