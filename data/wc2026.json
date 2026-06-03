@@ -135,7 +135,7 @@
       "away_team": "Qatar",
       "date": "2026-06-18T22:00:00Z",
       "odds": {
-        "home": 1.28,
+        "home": 1.29,
         "draw": 4.7,
         "away": 8.0
       },
@@ -200,8 +200,8 @@
       "date": "2026-06-13T22:00:00Z",
       "odds": {
         "home": 1.61,
-        "draw": 3.94,
-        "away": 6.3
+        "draw": 3.95,
+        "away": 6.25
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -329,7 +329,7 @@
       "odds": {
         "home": 1.75,
         "draw": 3.7,
-        "away": 3.55
+        "away": 4.7
       },
       "actual_score": null,
       "match_of_the_day": true,
