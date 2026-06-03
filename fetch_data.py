@@ -400,6 +400,30 @@ def main():
     # 1. Update match schedule & odds & scores
     data = update_odds_and_scores(data)
     
+    # Force update match of the day status for all matches
+    motd_schedule = {
+        ("Mexico", "South Africa"): "2026-06-11",
+        ("Brazil", "Morocco"): "2026-06-14",
+        ("Japan", "Netherlands"): "2026-06-14",
+        ("Belgium", "Egypt"): "2026-06-15",
+        ("Croatia", "England"): "2026-06-17",
+        ("Australia", "United States"): "2026-06-19",
+        ("Netherlands", "Sweden"): "2026-06-20",
+        ("Egypt", "New Zealand"): "2026-06-22",
+        ("Algeria", "Jordan"): "2026-06-23",
+        ("Colombia", "DR Congo"): "2026-06-24",
+        ("Brazil", "Scotland"): "2026-06-25",
+        ("Japan", "Sweden"): "2026-06-26",
+        ("France", "Norway"): "2026-06-26",
+        ("Spain", "Uruguay"): "2026-06-27"
+    }
+    
+    for match in data["matches"]:
+        home = normalize_team_name(match["home_team"])
+        away = normalize_team_name(match["away_team"])
+        pair = tuple(sorted([home, away]))
+        match["match_of_the_day"] = pair in motd_schedule
+    
     # 2. Scrape Wikipedia for stats
     wiki_url = "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     wiki_html = fetch_html(wiki_url)

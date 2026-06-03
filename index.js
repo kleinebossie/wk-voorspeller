@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Load match and group data
 async function loadData() {
   try {
-    const response = await fetch("data/wc2026.json");
+    const response = await fetch("data/wc2026.json?t=" + new Date().getTime());
     if (response.ok) {
       tournamentData = await response.json();
     } else {
