@@ -66,36 +66,59 @@ def normalize_team_name(name):
     return TEAM_ALIASES.get(clean, name.strip())
 
 def generate_default_matches():
+    # Matches of the day schedule
+    motd_schedule = {
+        ("Mexico", "South Africa"): "2026-06-11",
+        ("Brazil", "Morocco"): "2026-06-14",
+        ("Japan", "Netherlands"): "2026-06-14",
+        ("Belgium", "Egypt"): "2026-06-15",
+        ("Croatia", "England"): "2026-06-17",
+        ("Australia", "United States"): "2026-06-19",
+        ("Netherlands", "Sweden"): "2026-06-20",
+        ("Egypt", "New Zealand"): "2026-06-22",
+        ("Algeria", "Jordan"): "2026-06-23",
+        ("Colombia", "DR Congo"): "2026-06-24",
+        ("Brazil", "Scotland"): "2026-06-25",
+        ("Japan", "Sweden"): "2026-06-26",
+        ("France", "Norway"): "2026-06-26",
+        ("Spain", "Uruguay"): "2026-06-27"
+    }
+
     matches = []
-    match_id = 1
     
-    # Generate 6 group stage matches for each of the 12 groups
     for group_name, teams in GROUPS_DEFINITION.items():
-        # Match schedule formula (deterministic dates between June 11 and June 26, 2026)
         group_idx = ord(group_name) - ord('A')
         
         # Fixtures per group
         fixtures = [
             (teams[0], teams[1], 0), # Match 1
             (teams[2], teams[3], 0), # Match 2
-            (teams[0], teams[2], 5), # Match 3
-            (teams[3], teams[1], 5), # Match 4
-            (teams[3], teams[0], 10), # Match 5
-            (teams[1], teams[2], 10)  # Match 6
+            (teams[0], teams[2], 1), # Match 3
+            (teams[3], teams[1], 1), # Match 4
+            (teams[3], teams[0], 2), # Match 5
+            (teams[1], teams[2], 2)  # Match 6
         ]
         
-        for home, away, day_offset in fixtures:
-            # Distribute start times nicely
-            day = 11 + (group_idx % 6) + day_offset
-            hour = 15 + ((match_id % 3) * 3) # 15:00, 18:00, 21:00
+        for home, away, round_idx in fixtures:
+            # Check if this match is in MOTD list
+            pair = tuple(sorted([home, away]))
             
-            commence_time = f"2026-06-{day:02d}T{hour:02d}:00:00Z"
+            is_motd = pair in motd_schedule
+            if is_motd:
+                date_str = motd_schedule[pair]
+            else:
+                # Regular match date calculation based on group index and round index
+                # Spread group stages from June 11 to June 27
+                day = 11 + round_idx * 5 + (group_idx // 2)
+                day = min(27, max(11, day))
+                date_str = f"2026-06-{day:02d}"
             
-            # Select some match of the day
-            is_motd = (match_id % 12 == 1) # ~6 matches of the day total in groups
+            # Hour of match (15:00, 18:00, 21:00) deterministically
+            hour = 15 + ((hash(home + away) % 3) * 3)
+            commence_time = f"{date_str}T{hour:02d}:00:00Z"
             
             matches.append({
-                "id": str(match_id),
+                "id": "TEMP",
                 "stage": f"Groep {group_name}",
                 "home_team": home,
                 "away_team": away,
@@ -110,8 +133,12 @@ def generate_default_matches():
                 "home_first_scorer": None,
                 "away_first_scorer": None
             })
-            match_id += 1
             
+    # Sort matches chronologically by date
+    matches.sort(key=lambda m: m["date"])
+    for idx, m in enumerate(matches):
+        m["id"] = str(idx + 1)
+        
     return matches
 
 def load_existing_data():

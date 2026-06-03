@@ -421,7 +421,8 @@ function renderMatches() {
   container.innerHTML = "";
 
   const actualData = getActualData();
-  const list = actualData.matches;
+  const list = [...actualData.matches];
+  list.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   // Filter
   const filtered = list.filter(m => {
@@ -1354,7 +1355,8 @@ function renderAdminPanel() {
 
   // Populate Admin match uitslagen
   const actualData = getActualData();
-  const list = actualData.matches;
+  const list = [...actualData.matches];
+  list.sort((a, b) => new Date(a.date) - new Date(b.date));
   const matchContainer = document.getElementById("admin-matches-container");
   matchContainer.innerHTML = "";
 
