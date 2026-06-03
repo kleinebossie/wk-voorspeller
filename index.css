@@ -422,11 +422,86 @@ main {
     flex-direction: column;
     align-items: stretch;
   }
+  .logo-container {
+    justify-content: center;
+  }
+  .countdown-box {
+    justify-content: center;
+    margin: 0 auto;
+    max-width: max-content;
+  }
   .nav-tabs {
     overflow-x: auto;
     padding-bottom: 0.25rem;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .tab-btn {
+    flex-shrink: 0;
+  }
+  .admin-grid > .form-group {
+    grid-column: span 1 !important;
+  }
+  main {
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+  .stat-value {
+    font-size: 2rem;
   }
 }
+
+@media (max-width: 640px) {
+  .match-teams {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .team-display {
+    width: 100%;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.5rem;
+  }
+  .team-display.home {
+    flex-direction: row-reverse;
+  }
+  .team-name {
+    font-size: 1.05rem;
+  }
+  .team-flag {
+    width: 32px;
+    height: 22px;
+  }
+  .top-predictions-title {
+    text-align: center;
+  }
+  .top-btns-container {
+    justify-content: center;
+  }
+  .motd-scorers {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-input {
+    max-width: none;
+  }
+  .select-filter {
+    width: 100%;
+  }
+  .group-cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
 
 .slider-group {
   display: flex;
