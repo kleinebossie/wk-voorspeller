@@ -126,7 +126,12 @@ def generate_default_matches():
                 "odds": {
                     "home": 2.2,
                     "draw": 3.2,
-                    "away": 3.2
+                    "away": 3.2,
+                    "totals": {
+                        "line": 2.5,
+                        "over": 1.9,
+                        "under": 1.9
+                    }
                 },
                 "actual_score": None,
                 "match_of_the_day": is_motd,
@@ -254,7 +259,7 @@ def update_odds_and_scores(data):
         return data
         
     # Fetch Odds
-    odds_url = f"https://api.the-odds-api.com/v4/sports/{SPORT_KEY}/odds/?apiKey={ODDS_API_KEY}&regions=eu&markets=h2h"
+    odds_url = f"https://api.the-odds-api.com/v4/sports/{SPORT_KEY}/odds/?apiKey={ODDS_API_KEY}&regions=eu&markets=h2h,totals"
     print(f"Fetching odds from Odds API...")
     odds_json = fetch_json(odds_url)
     
@@ -271,24 +276,55 @@ def update_odds_and_scores(data):
             
             # Find bookmaker odds (average or first bookmaker)
             h2h_odds = {"home": 2.2, "draw": 3.2, "away": 3.2}
+            totals_odds = None
             bookmakers = match.get("bookmakers", [])
             if bookmakers:
                 # Use the first available bookmaker (e.g. Unibet, Bet365)
                 markets = bookmakers[0].get("markets", [])
-                if markets:
-                    outcomes = markets[0].get("outcomes", [])
-                    for outcome in outcomes:
-                        name = outcome.get("name")
-                        price = outcome.get("price")
-                        if name == match.get("home_team"):
-                            h2h_odds["home"] = price
-                        elif name == match.get("away_team"):
-                            h2h_odds["away"] = price
-                        else:
-                            h2h_odds["draw"] = price
+                for market in markets:
+                    market_key = market.get("key")
+                    outcomes = market.get("outcomes", [])
+                    if market_key == "h2h":
+                        for outcome in outcomes:
+                            name = outcome.get("name")
+                            price = outcome.get("price")
+                            if name == match.get("home_team"):
+                                h2h_odds["home"] = price
+                            elif name == match.get("away_team"):
+                                h2h_odds["away"] = price
+                            else:
+                                h2h_odds["draw"] = price
+                    elif market_key == "totals":
+                        over_odds = None
+                        under_odds = None
+                        point = None
+                        for outcome in outcomes:
+                            name = outcome.get("name")
+                            price = outcome.get("price")
+                            point = outcome.get("point")
+                            if name == "Over":
+                                over_odds = price
+                            elif name == "Under":
+                                under_odds = price
+                        if over_odds is not None and under_odds is not None and point is not None:
+                            totals_odds = {
+                                "line": point,
+                                "over": over_odds,
+                                "under": under_odds
+                            }
+            
+            match_odds = {
+                "home": h2h_odds["home"],
+                "draw": h2h_odds["draw"],
+                "away": h2h_odds["away"]
+            }
+            if totals_odds:
+                match_odds["totals"] = totals_odds
+            else:
+                match_odds["totals"] = {"line": 2.5, "over": 1.9, "under": 1.9}
             
             odds_by_match[f"{home}:{away}"] = {
-                "odds": h2h_odds,
+                "odds": match_odds,
                 "date": match.get("commence_time")
             }
             
@@ -327,6 +363,8 @@ def update_odds_and_scores(data):
                 "draw": odds["draw"],
                 "away": odds["home"]
             }
+            if "totals" in odds:
+                match["odds"]["totals"] = odds["totals"]
             match["date"] = odds_by_match[rev_key]["date"]
             
         if key in scores_by_match:
@@ -355,21 +393,52 @@ def update_odds_and_scores(data):
                 stage = "Knock-out Fase"
                 # Set default odds
                 h2h_odds = {"home": 2.2, "draw": 3.2, "away": 3.2}
+                totals_odds = None
                 bookmakers = match.get("bookmakers", [])
                 if bookmakers:
                     markets = bookmakers[0].get("markets", [])
-                    if markets:
-                        outcomes = markets[0].get("outcomes", [])
-                        for outcome in outcomes:
-                            name = outcome.get("name")
-                            price = outcome.get("price")
-                            if name == match.get("home_team"):
-                                h2h_odds["home"] = price
-                            elif name == match.get("away_team"):
-                                h2h_odds["away"] = price
-                            else:
-                                h2h_odds["draw"] = price
+                    for market in markets:
+                        market_key = market.get("key")
+                        outcomes = market.get("outcomes", [])
+                        if market_key == "h2h":
+                            for outcome in outcomes:
+                                name = outcome.get("name")
+                                price = outcome.get("price")
+                                if name == match.get("home_team"):
+                                    h2h_odds["home"] = price
+                                elif name == match.get("away_team"):
+                                    h2h_odds["away"] = price
+                                else:
+                                    h2h_odds["draw"] = price
+                        elif market_key == "totals":
+                            over_odds = None
+                            under_odds = None
+                            point = None
+                            for outcome in outcomes:
+                                name = outcome.get("name")
+                                price = outcome.get("price")
+                                point = outcome.get("point")
+                                if name == "Over":
+                                    over_odds = price
+                                elif name == "Under":
+                                    under_odds = price
+                            if over_odds is not None and under_odds is not None and point is not None:
+                                totals_odds = {
+                                    "line": point,
+                                    "over": over_odds,
+                                    "under": under_odds
+                                }
                                 
+                match_odds = {
+                    "home": h2h_odds["home"],
+                    "draw": h2h_odds["draw"],
+                    "away": h2h_odds["away"]
+                }
+                if totals_odds:
+                    match_odds["totals"] = totals_odds
+                else:
+                    match_odds["totals"] = {"line": 2.5, "over": 1.9, "under": 1.9}
+                    
                 actual_score = scores_by_match.get(pair) or scores_by_match.get(f"{away}:{home}")
                 if actual_score and pair not in scores_by_match: # it was reversed
                     actual_score = {"home": actual_score["away"], "away": actual_score["home"]}
@@ -380,7 +449,7 @@ def update_odds_and_scores(data):
                     "home_team": match.get("home_team"),
                     "away_team": match.get("away_team"),
                     "date": match.get("commence_time"),
-                    "odds": h2h_odds,
+                    "odds": match_odds,
                     "actual_score": actual_score,
                     "match_of_the_day": False,
                     "home_first_scorer": None,

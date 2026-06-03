@@ -9,7 +9,12 @@
       "odds": {
         "home": 1.46,
         "draw": 4.45,
-        "away": 8.2
+        "away": 8.2,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -25,7 +30,12 @@
       "odds": {
         "home": 2.69,
         "draw": 3.2,
-        "away": 2.88
+        "away": 2.88,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -41,7 +51,12 @@
       "odds": {
         "home": 1.85,
         "draw": 3.4,
-        "away": 4.6
+        "away": 4.6,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -57,7 +72,12 @@
       "odds": {
         "home": 2.1,
         "draw": 3.1,
-        "away": 4.0
+        "away": 4.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -73,7 +93,12 @@
       "odds": {
         "home": 3.7,
         "draw": 3.15,
-        "away": 1.66
+        "away": 1.66,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -89,7 +114,12 @@
       "odds": {
         "home": 3.3,
         "draw": 3.05,
-        "away": 1.8
+        "away": 1.8,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -105,7 +135,12 @@
       "odds": {
         "home": 2.2,
         "draw": 3.2,
-        "away": 3.2
+        "away": 3.2,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -121,7 +156,12 @@
       "odds": {
         "home": 14.0,
         "draw": 6.25,
-        "away": 1.23
+        "away": 1.23,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -137,7 +177,12 @@
       "odds": {
         "home": 1.28,
         "draw": 4.7,
-        "away": 8.0
+        "away": 8.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -153,7 +198,12 @@
       "odds": {
         "home": 2.2,
         "draw": 3.2,
-        "away": 3.2
+        "away": 3.2,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -169,7 +219,12 @@
       "odds": {
         "home": 2.05,
         "draw": 3.2,
-        "away": 3.5
+        "away": 3.5,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -185,7 +240,12 @@
       "odds": {
         "home": 2.2,
         "draw": 3.2,
-        "away": 3.2
+        "away": 3.2,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -201,7 +261,12 @@
       "odds": {
         "home": 1.61,
         "draw": 3.94,
-        "away": 6.3
+        "away": 6.3,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -217,7 +282,12 @@
       "odds": {
         "home": 7.3,
         "draw": 4.65,
-        "away": 1.47
+        "away": 1.47,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -233,7 +303,12 @@
       "odds": {
         "home": 1.04,
         "draw": 15.0,
-        "away": 51.0
+        "away": 51.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -249,7 +324,12 @@
       "odds": {
         "home": 3.55,
         "draw": 3.15,
-        "away": 1.92
+        "away": 1.92,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -265,7 +345,12 @@
       "odds": {
         "home": 8.0,
         "draw": 5.0,
-        "away": 1.36
+        "away": 1.36,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -281,7 +366,12 @@
       "odds": {
         "home": 1.2,
         "draw": 6.0,
-        "away": 12.0
+        "away": 12.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -297,7 +387,12 @@
       "odds": {
         "home": 2.03,
         "draw": 3.5,
-        "away": 3.94
+        "away": 3.94,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -313,7 +408,12 @@
       "odds": {
         "home": 4.75,
         "draw": 3.75,
-        "away": 1.8
+        "away": 1.8,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -329,7 +429,12 @@
       "odds": {
         "home": 1.75,
         "draw": 3.7,
-        "away": 3.55
+        "away": 3.55,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -345,7 +450,12 @@
       "odds": {
         "home": 2.3,
         "draw": 3.1,
-        "away": 3.4
+        "away": 3.4,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -361,7 +471,12 @@
       "odds": {
         "home": 2.4,
         "draw": 3.1,
-        "away": 2.25
+        "away": 2.25,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -377,7 +492,12 @@
       "odds": {
         "home": 2.0,
         "draw": 3.05,
-        "away": 3.1
+        "away": 3.1,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -393,7 +513,12 @@
       "odds": {
         "home": 1.05,
         "draw": 16.75,
-        "away": 61.0
+        "away": 61.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -409,7 +534,12 @@
       "odds": {
         "home": 3.89,
         "draw": 2.79,
-        "away": 2.39
+        "away": 2.39,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -425,7 +555,12 @@
       "odds": {
         "home": 1.54,
         "draw": 4.25,
-        "away": 6.0
+        "away": 6.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -441,7 +576,12 @@
       "odds": {
         "home": 1.19,
         "draw": 6.0,
-        "away": 9.0
+        "away": 9.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -457,7 +597,12 @@
       "odds": {
         "home": 4.2,
         "draw": 3.45,
-        "away": 1.52
+        "away": 1.52,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -473,7 +618,12 @@
       "odds": {
         "home": 6.5,
         "draw": 4.4,
-        "away": 1.24
+        "away": 1.24,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -489,7 +639,12 @@
       "odds": {
         "home": 1.95,
         "draw": 3.72,
-        "away": 4.0
+        "away": 4.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -505,7 +660,12 @@
       "odds": {
         "home": 1.98,
         "draw": 3.48,
-        "away": 4.2
+        "away": 4.2,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -521,7 +681,12 @@
       "odds": {
         "home": 1.73,
         "draw": 3.8,
-        "away": 4.75
+        "away": 4.75,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -537,7 +702,12 @@
       "odds": {
         "home": 4.75,
         "draw": 3.35,
-        "away": 1.85
+        "away": 1.85,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -553,7 +723,12 @@
       "odds": {
         "home": 4.8,
         "draw": 3.65,
-        "away": 1.41
+        "away": 1.41,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -569,7 +744,12 @@
       "odds": {
         "home": 1.94,
         "draw": 3.15,
-        "away": 3.15
+        "away": 3.15,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -585,7 +765,12 @@
       "odds": {
         "home": 1.68,
         "draw": 4.05,
-        "away": 5.3
+        "away": 5.3,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -601,7 +786,12 @@
       "odds": {
         "home": 1.95,
         "draw": 3.46,
-        "away": 4.27
+        "away": 4.27,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -617,7 +807,12 @@
       "odds": {
         "home": 1.38,
         "draw": 4.55,
-        "away": 7.59
+        "away": 7.59,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -633,7 +828,12 @@
       "odds": {
         "home": 5.0,
         "draw": 3.6,
-        "away": 1.75
+        "away": 1.75,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -649,7 +849,12 @@
       "odds": {
         "home": 9.71,
         "draw": 5.74,
-        "away": 1.3
+        "away": 1.3,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -665,7 +870,12 @@
       "odds": {
         "home": 2.38,
         "draw": 3.08,
-        "away": 3.62
+        "away": 3.62,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -681,7 +891,12 @@
       "odds": {
         "home": 1.11,
         "draw": 10.25,
-        "away": 31.0
+        "away": 31.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -697,7 +912,12 @@
       "odds": {
         "home": 7.4,
         "draw": 4.45,
-        "away": 1.49
+        "away": 1.49,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -713,7 +933,12 @@
       "odds": {
         "home": 1.11,
         "draw": 10.5,
-        "away": 29.0
+        "away": 29.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -729,7 +954,12 @@
       "odds": {
         "home": 1.44,
         "draw": 4.5,
-        "away": 7.0
+        "away": 7.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -745,7 +975,12 @@
       "odds": {
         "home": 5.3,
         "draw": 3.8,
-        "away": 1.57
+        "away": 1.57,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -761,7 +996,12 @@
       "odds": {
         "home": 2.45,
         "draw": 3.2,
-        "away": 2.75
+        "away": 2.75,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -777,7 +1017,12 @@
       "odds": {
         "home": 1.46,
         "draw": 4.55,
-        "away": 7.9
+        "away": 7.9,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -793,7 +1038,12 @@
       "odds": {
         "home": 16.0,
         "draw": 6.75,
-        "away": 1.22
+        "away": 1.22,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -809,7 +1059,12 @@
       "odds": {
         "home": 1.11,
         "draw": 9.0,
-        "away": 26.0
+        "away": 26.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -825,7 +1080,12 @@
       "odds": {
         "home": 2.16,
         "draw": 3.54,
-        "away": 3.52
+        "away": 3.52,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -841,7 +1101,12 @@
       "odds": {
         "home": 4.62,
         "draw": 3.66,
-        "away": 1.78
+        "away": 1.78,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -857,7 +1122,12 @@
       "odds": {
         "home": 1.45,
         "draw": 4.31,
-        "away": 6.94
+        "away": 6.94,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -873,7 +1143,12 @@
       "odds": {
         "home": 1.42,
         "draw": 4.55,
-        "away": 9.3
+        "away": 9.3,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -889,7 +1164,12 @@
       "odds": {
         "home": 1.32,
         "draw": 5.75,
-        "away": 10.0
+        "away": 10.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -905,7 +1185,12 @@
       "odds": {
         "home": 1.65,
         "draw": 3.75,
-        "away": 5.5
+        "away": 5.5,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -921,7 +1206,12 @@
       "odds": {
         "home": 5.55,
         "draw": 3.94,
-        "away": 1.68
+        "away": 1.68,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -937,7 +1227,12 @@
       "odds": {
         "home": 16.0,
         "draw": 6.7,
-        "away": 1.14
+        "away": 1.14,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -953,7 +1248,12 @@
       "odds": {
         "home": 2.9,
         "draw": 2.9,
-        "away": 2.0
+        "away": 2.0,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -969,7 +1269,12 @@
       "odds": {
         "home": 1.27,
         "draw": 6.0,
-        "away": 11.5
+        "away": 11.5,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -985,7 +1290,12 @@
       "odds": {
         "home": 8.7,
         "draw": 4.6,
-        "away": 1.43
+        "away": 1.43,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1001,7 +1311,12 @@
       "odds": {
         "home": 1.21,
         "draw": 5.6,
-        "away": 8.5
+        "away": 8.5,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1017,7 +1332,12 @@
       "odds": {
         "home": 1.45,
         "draw": 4.3,
-        "away": 7.5
+        "away": 7.5,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -1033,7 +1353,12 @@
       "odds": {
         "home": 3.4,
         "draw": 3.25,
-        "away": 2.14
+        "away": 2.14,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1049,7 +1374,12 @@
       "odds": {
         "home": 2.3,
         "draw": 3.05,
-        "away": 2.6
+        "away": 2.6,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1065,7 +1395,12 @@
       "odds": {
         "home": 1.75,
         "draw": 3.88,
-        "away": 4.95
+        "away": 4.95,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": true,
@@ -1081,7 +1416,12 @@
       "odds": {
         "home": 2.03,
         "draw": 3.68,
-        "away": 3.74
+        "away": 3.74,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1097,7 +1437,12 @@
       "odds": {
         "home": 1.27,
         "draw": 5.0,
-        "away": 7.5
+        "away": 7.5,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1113,7 +1458,12 @@
       "odds": {
         "home": 5.8,
         "draw": 4.0,
-        "away": 1.45
+        "away": 1.45,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1129,7 +1479,12 @@
       "odds": {
         "home": 12.0,
         "draw": 5.7,
-        "away": 1.22
+        "away": 1.22,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1145,7 +1500,12 @@
       "odds": {
         "home": 1.65,
         "draw": 3.6,
-        "away": 4.9
+        "away": 4.9,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1161,7 +1521,12 @@
       "odds": {
         "home": 1.85,
         "draw": 3.45,
-        "away": 4.8
+        "away": 4.8,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1177,7 +1542,12 @@
       "odds": {
         "home": 1.57,
         "draw": 4.1,
-        "away": 5.8
+        "away": 5.8,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,
@@ -1193,7 +1563,12 @@
       "odds": {
         "home": 1.57,
         "draw": 3.8,
-        "away": 5.6
+        "away": 5.6,
+        "totals": {
+          "line": 2.5,
+          "over": 1.9,
+          "under": 1.9
+        }
       },
       "actual_score": null,
       "match_of_the_day": false,

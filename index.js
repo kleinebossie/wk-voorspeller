@@ -253,6 +253,56 @@ function getActualData() {
   return { matches, stats };
 }
 
+// Estimate expected goals from over/under odds using Poisson CDF and binary search
+function estimateExpectedGoals(line, overOdds, underOdds) {
+  if (!line || !overOdds || !underOdds) return 2.6;
+  
+  const impliedOver = 1 / overOdds;
+  const impliedUnder = 1 / underOdds;
+  const sumImplied = impliedOver + impliedUnder;
+  if (sumImplied === 0) return 2.6;
+  
+  const pUnder = impliedUnder / sumImplied;
+  const n = Math.floor(line);
+  
+  // Poisson CDF function: sum_{k=0}^{n} (e^-lambda * lambda^k) / k!
+  const poissonCDF = (lambda, limit) => {
+    let sum = 0;
+    let term = Math.exp(-lambda); // e^-lambda
+    let lambdaPower = 1;
+    let factorial = 1;
+    for (let k = 0; k <= limit; k++) {
+      if (k > 0) {
+        lambdaPower *= lambda;
+        factorial *= k;
+      }
+      sum += (term * lambdaPower) / factorial;
+    }
+    return sum;
+  };
+  
+  // Binary search for lambda (expected goals)
+  let low = 0.01;
+  let high = 15.0;
+  let epsilon = 0.0001;
+  let iterations = 0;
+  
+  while (high - low > epsilon && iterations < 50) {
+    let mid = (low + high) / 2;
+    let val = poissonCDF(mid, n);
+    if (val > pUnder) {
+      // mid is too small (makes probability of under too large)
+      low = mid;
+    } else {
+      // mid is too large (makes probability of under too small)
+      high = mid;
+    }
+    iterations++;
+  }
+  
+  return (low + high) / 2;
+}
+
 // Math Predictor: Poisson logic
 function calculatePoissonPredictions(odds, riskFactor, goalFactor) {
   // 1. Odds to Implied Probabilities
@@ -303,8 +353,11 @@ function calculatePoissonPredictions(odds, riskFactor, goalFactor) {
   }
 
   // 3. Goal factor adjustment
-  const baseExpectedGoals = 2.6;
-  // Goal Factor (-1 to 1) scales goals from 0.8 goals up to ~4.6 goals
+  let baseExpectedGoals = 2.6;
+  if (odds && odds.totals) {
+    baseExpectedGoals = estimateExpectedGoals(odds.totals.line, odds.totals.over, odds.totals.under);
+  }
+  // Goal Factor (-1 to 1) scales goals relative to the base expected goals
   const expectedGoals = Math.max(0.5, baseExpectedGoals * (1 + 0.8 * goalFactor));
 
   // Distribute goals using outcome weights
@@ -385,10 +438,11 @@ function getRiskStatus(val) {
   return "Neutraal (Boekmaker)";
 }
 
-function getGoalStatus(val) {
-  if (val < -0.1) return `Defensief (${Math.abs(val).toFixed(1)})`;
-  if (val > 0.1) return `Aanvallend (${val.toFixed(1)})`;
-  return "Gemiddeld (2.6 goals)";
+function getGoalStatus(val, baseExpectedGoals = 2.6) {
+  const calculatedGoals = baseExpectedGoals * (1 + 0.8 * val);
+  if (val < -0.1) return `Defensief (${calculatedGoals.toFixed(1)} goals)`;
+  if (val > 0.1) return `Aanvallend (${calculatedGoals.toFixed(1)} goals)`;
+  return `Gemiddeld (${baseExpectedGoals.toFixed(1)} goals)`;
 }
 
 // Filters implementation
@@ -460,6 +514,9 @@ function renderMatches() {
     const matchDate = new Date(m.date);
     const isFrozen = new Date() > matchDate;
 
+    // Calculate expected goals from bookmaker totals odds
+    const baseExpectedGoals = m.odds.totals ? estimateExpectedGoals(m.odds.totals.line, m.odds.totals.over, m.odds.totals.under) : 2.6;
+
     // Calculate live Poisson
     const top3 = calculatePoissonPredictions(m.odds, pred.risk, pred.goal);
 
@@ -529,7 +586,7 @@ function renderMatches() {
         <div class="slider-group">
           <div class="slider-header">
             <span>Goalfactor</span>
-            <span class="slider-status goal-status-label">${getGoalStatus(pred.goal)}</span>
+            <span class="slider-status goal-status-label">${getGoalStatus(pred.goal, baseExpectedGoals)}</span>
           </div>
           <input type="range" class="range-slider goal-slider" min="-1" max="1" step="0.1" value="${pred.goal}">
         </div>
@@ -611,7 +668,7 @@ function renderMatches() {
     goalSlider.addEventListener("input", (e) => {
       const val = parseFloat(e.target.value);
       pred.goal = val;
-      card.querySelector(".goal-status-label").textContent = getGoalStatus(val);
+      card.querySelector(".goal-status-label").textContent = getGoalStatus(val, baseExpectedGoals);
       
       // Recalculate top 3 live
       const newTop3 = calculatePoissonPredictions(m.odds, pred.risk, pred.goal);
