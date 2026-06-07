@@ -49,9 +49,9 @@
       "away_team": "South Korea",
       "date": "2026-06-19T01:00:00Z",
       "odds": {
-        "home": 1.82,
-        "draw": 3.45,
-        "away": 4.7,
+        "home": 1.8,
+        "draw": 3.5,
+        "away": 4.8,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -429,7 +429,7 @@
       "odds": {
         "home": 1.78,
         "draw": 4.1,
-        "away": 4.4,
+        "away": 4.6,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -784,9 +784,9 @@
       "away_team": "New Zealand",
       "date": "2026-06-16T01:00:00Z",
       "odds": {
-        "home": 1.92,
+        "home": 1.91,
         "draw": 3.47,
-        "away": 4.45,
+        "away": 4.46,
         "totals": {
           "line": 2.25,
           "over": 2.09,
