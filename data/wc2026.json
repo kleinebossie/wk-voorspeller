@@ -155,12 +155,12 @@
       "date": "2026-06-13T19:00:00Z",
       "odds": {
         "home": 14.0,
-        "draw": 6.25,
-        "away": 1.23,
+        "draw": 6.4,
+        "away": 1.22,
         "totals": {
           "line": 2.5,
-          "over": 1.61,
-          "under": 2.18
+          "over": 1.6,
+          "under": 2.2
         }
       },
       "actual_score": null,
@@ -280,9 +280,9 @@
       "away_team": "Scotland",
       "date": "2026-06-14T01:00:00Z",
       "odds": {
-        "home": 6.85,
-        "draw": 4.55,
-        "away": 1.5,
+        "home": 6.7,
+        "draw": 4.45,
+        "away": 1.52,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -307,7 +307,7 @@
         "totals": {
           "line": 3.5,
           "over": 1.77,
-          "under": 2.07
+          "under": 2.01
         }
       },
       "actual_score": null,
@@ -408,7 +408,7 @@
       "odds": {
         "home": 4.75,
         "draw": 3.75,
-        "away": 1.82,
+        "away": 1.8,
         "totals": {
           "line": 2.5,
           "over": 2.0,
@@ -427,9 +427,9 @@
       "away_team": "Australia",
       "date": "2026-06-19T19:00:00Z",
       "odds": {
-        "home": 1.79,
-        "draw": 4.0,
-        "away": 4.3,
+        "home": 1.78,
+        "draw": 4.1,
+        "away": 4.4,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -453,8 +453,8 @@
         "away": 3.45,
         "totals": {
           "line": 2.5,
-          "over": 2.2,
-          "under": 1.6
+          "over": 2.23,
+          "under": 1.57
         }
       },
       "actual_score": null,
@@ -512,7 +512,7 @@
       "date": "2026-06-14T17:00:00Z",
       "odds": {
         "home": 1.05,
-        "draw": 16.75,
+        "draw": 16.5,
         "away": 61.0,
         "totals": {
           "line": 2.5,
@@ -532,9 +532,9 @@
       "away_team": "Ecuador",
       "date": "2026-06-14T23:00:00Z",
       "odds": {
-        "home": 3.78,
+        "home": 3.77,
         "draw": 2.81,
-        "away": 2.42,
+        "away": 2.43,
         "totals": {
           "line": 1.75,
           "over": 1.82,
@@ -553,13 +553,13 @@
       "away_team": "Ivory Coast",
       "date": "2026-06-20T20:00:00Z",
       "odds": {
-        "home": 1.51,
-        "draw": 4.25,
-        "away": 6.4,
+        "home": 1.57,
+        "draw": 4.1,
+        "away": 5.8,
         "totals": {
           "line": 2.5,
-          "over": 1.68,
-          "under": 1.89
+          "over": 1.71,
+          "under": 1.85
         }
       },
       "actual_score": null,
@@ -637,9 +637,9 @@
       "away_team": "Japan",
       "date": "2026-06-14T20:00:00Z",
       "odds": {
-        "home": 1.96,
-        "draw": 3.72,
-        "away": 3.95,
+        "home": 1.97,
+        "draw": 3.7,
+        "away": 3.94,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -763,9 +763,9 @@
       "away_team": "Egypt",
       "date": "2026-06-15T19:00:00Z",
       "odds": {
-        "home": 1.7,
-        "draw": 3.88,
-        "away": 5.4,
+        "home": 1.69,
+        "draw": 3.9,
+        "away": 5.45,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -1059,7 +1059,7 @@
       "odds": {
         "home": 1.13,
         "draw": 8.5,
-        "away": 23.0,
+        "away": 21.0,
         "totals": {
           "line": 3.5,
           "over": 2.16,
@@ -1141,9 +1141,9 @@
       "away_team": "Algeria",
       "date": "2026-06-17T01:00:00Z",
       "odds": {
-        "home": 1.41,
-        "draw": 4.6,
-        "away": 9.5,
+        "home": 1.42,
+        "draw": 4.55,
+        "away": 9.3,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -1183,13 +1183,13 @@
       "away_team": "Austria",
       "date": "2026-06-22T17:00:00Z",
       "odds": {
-        "home": 1.67,
+        "home": 1.68,
         "draw": 3.8,
-        "away": 5.3,
+        "away": 5.25,
         "totals": {
           "line": 2.5,
           "over": 1.83,
-          "under": 1.73
+          "under": 1.74
         }
       },
       "actual_score": null,
@@ -1205,12 +1205,12 @@
       "date": "2026-06-23T03:00:00Z",
       "odds": {
         "home": 6.1,
-        "draw": 4.1,
-        "away": 1.6,
+        "draw": 4.0,
+        "away": 1.61,
         "totals": {
           "line": 2.5,
-          "over": 1.85,
-          "under": 1.83
+          "over": 1.88,
+          "under": 1.82
         }
       },
       "actual_score": null,
@@ -1267,13 +1267,13 @@
       "away_team": "DR Congo",
       "date": "2026-06-17T17:00:00Z",
       "odds": {
-        "home": 1.28,
-        "draw": 6.0,
-        "away": 11.5,
+        "home": 1.25,
+        "draw": 6.25,
+        "away": 12.0,
         "totals": {
           "line": 2.5,
-          "over": 1.56,
-          "under": 2.28
+          "over": 1.53,
+          "under": 2.35
         }
       },
       "actual_score": null,
@@ -1394,8 +1394,8 @@
       "date": "2026-06-17T20:00:00Z",
       "odds": {
         "home": 1.76,
-        "draw": 3.84,
-        "away": 4.95,
+        "draw": 3.85,
+        "away": 4.9,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -1414,9 +1414,9 @@
       "away_team": "Panama",
       "date": "2026-06-17T23:00:00Z",
       "odds": {
-        "home": 2.05,
-        "draw": 3.64,
-        "away": 3.72,
+        "home": 2.06,
+        "draw": 3.62,
+        "away": 3.7,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -1519,13 +1519,13 @@
       "away_team": "Bosnia & Herzegovina",
       "date": "2026-06-12T19:00:00Z",
       "odds": {
-        "home": 1.87,
+        "home": 1.85,
         "draw": 3.45,
         "away": 4.75,
         "totals": {
           "line": 2.5,
           "over": 2.2,
-          "under": 1.57
+          "under": 1.6
         }
       },
       "actual_score": null,
@@ -1541,8 +1541,8 @@
       "date": "2026-06-18T19:00:00Z",
       "odds": {
         "home": 1.57,
-        "draw": 3.95,
-        "away": 6.0,
+        "draw": 3.9,
+        "away": 6.1,
         "totals": {
           "line": 2.5,
           "over": 1.9,
