@@ -28,9 +28,9 @@
       "away_team": "Czechia",
       "date": "2026-06-12T02:00:00Z",
       "odds": {
-        "home": 2.73,
+        "home": 2.67,
         "draw": 3.15,
-        "away": 2.88,
+        "away": 2.94,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -156,7 +156,7 @@
       "odds": {
         "home": 14.0,
         "draw": 6.4,
-        "away": 1.22,
+        "away": 1.23,
         "totals": {
           "line": 2.5,
           "over": 1.6,
@@ -427,9 +427,9 @@
       "away_team": "Australia",
       "date": "2026-06-19T19:00:00Z",
       "odds": {
-        "home": 1.78,
-        "draw": 4.1,
-        "away": 4.6,
+        "home": 1.77,
+        "draw": 4.0,
+        "away": 4.7,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -532,9 +532,9 @@
       "away_team": "Ecuador",
       "date": "2026-06-14T23:00:00Z",
       "odds": {
-        "home": 3.77,
+        "home": 3.75,
         "draw": 2.81,
-        "away": 2.43,
+        "away": 2.44,
         "totals": {
           "line": 1.75,
           "over": 1.82,
@@ -911,8 +911,8 @@
       "date": "2026-06-15T22:00:00Z",
       "odds": {
         "home": 7.5,
-        "draw": 4.4,
-        "away": 1.49,
+        "draw": 4.33,
+        "away": 1.5,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -1015,9 +1015,9 @@
       "away_team": "Senegal",
       "date": "2026-06-16T19:00:00Z",
       "odds": {
-        "home": 1.48,
-        "draw": 4.45,
-        "away": 7.6,
+        "home": 1.49,
+        "draw": 4.4,
+        "away": 7.5,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -1519,9 +1519,9 @@
       "away_team": "Bosnia & Herzegovina",
       "date": "2026-06-12T19:00:00Z",
       "odds": {
-        "home": 1.85,
-        "draw": 3.45,
-        "away": 4.75,
+        "home": 1.83,
+        "draw": 3.6,
+        "away": 4.7,
         "totals": {
           "line": 2.5,
           "over": 2.2,
