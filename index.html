@@ -14,200 +14,226 @@
     <div class="logo-container">
       <span class="logo-text">WK 2026 xPts Voorspeller</span>
     </div>
-    <div class="header-tagline">
-      Bereken de slimste voorspellingen op basis van bookmaker odds
+
+    <!-- Countdown to Tournament Start (June 11, 2026) -->
+    <div class="countdown-box" id="deadline-counter">
+      <div class="countdown-pulse"></div>
+      <span id="countdown-text">Aftellen laden...</span>
     </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="matches-tab" id="tab-btn-matches">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 4px;"><path d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"/><path d="M11 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm-4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm-4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zM11 9.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm-4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm-4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1z"/></svg>
+        Wedstrijden
+      </button>
+      <button class="tab-btn" data-tab="calc-tab" id="tab-btn-calc">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 4px;"><path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/><path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm1 .5v1h6V3H5zm.5 4.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zM5.5 10a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zM5.5 12.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/></svg>
+        Losse Rekenmachine
+      </button>
+    </nav>
   </header>
 
   <!-- Main Content Area -->
   <main>
     
-    <!-- STATS OVERVIEW CARD -->
-    <div class="glass stats-dashboard">
-      <div class="dashboard-header">
-        <h2 class="section-title" style="margin-bottom: 0;">Mijn Poule Dashboard</h2>
-        <span class="badge-info">Wiskundig Spelen</span>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
-        Expected Points (xPts) is het gemiddelde aantal punten dat een voorspelling oplevert. Hoe hoger de xPts, hoe groter je kans om te winnen in je WK-poule!
-      </p>
+    <!-- TAB 1: TOERNOOI WEDSTRIJDEN -->
+    <section id="matches-tab" class="tab-content active">
       
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">Totaal Verwachte Punten</div>
-          <div class="stat-value" id="dashboard-total-xpts">0.00</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted);">gemiddelde score van al je voorspellingen</div>
+      <!-- STATS OVERVIEW CARD -->
+      <div class="glass stats-dashboard">
+        <div class="dashboard-header">
+          <h2 class="section-title" style="margin-bottom: 0;">Mijn Poule Dashboard</h2>
+          <span class="badge-info">Wiskundig Spelen</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-label">Voorspelde Wedstrijden</div>
-          <div class="stat-value" id="dashboard-predicted-count">0 / 0</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted);">wedstrijden ingevuld</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+          Expected Points (xPts) is het gemiddelde aantal punten dat een voorspelling oplevert. Hoe hoger de xPts, hoe groter je kans om te winnen in je WK-poule!
+        </p>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Totaal Verwachte Punten</div>
+            <div class="stat-value" id="dashboard-total-xpts">0.00</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">gemiddelde score van al je voorspellingen</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Voorspelde Wedstrijden</div>
+            <div class="stat-value" id="dashboard-predicted-count">0 / 0</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">wedstrijden ingevuld</div>
+          </div>
+          <div class="stat-card motd">
+            <div class="stat-label">Optimale Voorspellingen</div>
+            <div class="stat-value" id="dashboard-optimal-count">0</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">wedstrijden ingesteld op maximale xPts</div>
+          </div>
         </div>
-        <div class="stat-card motd">
-          <div class="stat-label">Optimale Voorspellingen</div>
-          <div class="stat-value" id="dashboard-optimal-count">0</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted);">wedstrijden ingesteld op maximale xPts</div>
+
+        <div class="action-buttons-container">
+          <button class="btn-primary" id="btn-autofill-optimal">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-7.1 2h3.932a.25.25 0 0 0 .192-.41L6.6 6.23a.25.25 0 0 0-.384 0L4.25 8.59a.25.25 0 0 0 .192.41z"/><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/></svg>
+            Vul Alles Optimaal In
+          </button>
+          <button class="btn-secondary" id="btn-copy-predictions">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>
+            Kopieer Voorspellingen
+          </button>
+          <button class="btn-secondary" id="btn-reset-predictions" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: hsl(350, 75%, 60%);">
+            Wis Alle Voorspellingen
+          </button>
         </div>
       </div>
 
-      <div class="action-buttons-container">
-        <button class="btn-primary" id="btn-autofill-optimal">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-7.1 2h3.932a.25.25 0 0 0 .192-.41L6.6 6.23a.25.25 0 0 0-.384 0L4.25 8.59a.25.25 0 0 0 .192.41z"/><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/></svg>
-          Vul Alles Optimaal In
-        </button>
-        <button class="btn-secondary" id="btn-reset-predictions">
-          Wis Alle Voorspellingen
-        </button>
+      <!-- MATCH LIST HEADER & FILTERS -->
+      <div class="column-header-bar" style="margin-bottom: 1.5rem;">
+        <h2 class="section-title">WK 2026 Wedstrijden</h2>
+        
+        <div class="filter-controls">
+          <input type="text" class="search-input" id="match-search" placeholder="Zoek op land...">
+          <select class="select-filter" id="match-round-filter">
+            <option value="all">Alle Speelrondes</option>
+            <option value="groep">Groepsfase</option>
+            <option value="round of 32">16e Finales</option>
+            <option value="round of 16">8e Finales</option>
+            <option value="quarter">Kwartfinales</option>
+            <option value="semi">Halve Finales</option>
+            <option value="final">Finales</option>
+            <option value="motd">Match of the Day</option>
+          </select>
+        </div>
       </div>
-    </div>
 
-    <!-- MAIN TWO COLUMN GRID -->
-    <div class="main-two-columns">
-      
-      <!-- LEFT COLUMN: TOURNAMENT LIST -->
-      <div class="column-matches">
-        <div class="column-header-bar">
-          <h2 class="section-title">WK 2026 Wedstrijden</h2>
+      <div class="matches-grid" id="tournament-matches-container">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+
+    <!-- TAB 2: CUSTOM CALCULATOR -->
+    <section id="calc-tab" class="tab-content">
+      <div class="glass centered-calculator">
+        <h2 class="section-title">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 0.5rem;"><path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/><path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm1 .5v1h6V3H5zm.5 4.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zM5.5 10a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zM5.5 12.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/></svg>
+          Losse Wedstrijd Berekenen
+        </h2>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">
+          Voer handmatig de bookmaker odds van een wedstrijd in om direct de verwachte punten te berekenen.
+        </p>
+
+        <div class="calc-section">
+          <div class="toggle-container">
+            <label class="toggle-label" for="calc-motd">
+              <input type="checkbox" id="calc-motd">
+              <span>Match of the Day (Scorers & dubbele punten)</span>
+            </label>
+          </div>
           
-          <div class="filter-controls">
-            <input type="text" class="search-input" id="match-search" placeholder="Zoek op land...">
-            <select class="select-filter" id="match-round-filter">
-              <option value="all">Alle Speelrondes</option>
-              <option value="groep">Groepsfase</option>
-              <option value="round of 32">16e Finales</option>
-              <option value="round of 16">8e Finales</option>
-              <option value="quarter">Kwartfinales</option>
-              <option value="semi">Halve Finales</option>
-              <option value="final">Finales</option>
-              <option value="motd">Match of the Day</option>
-            </select>
+          <div class="calc-team-inputs">
+            <div class="form-group">
+              <label for="calc-home-name">Thuisploeg</label>
+              <input type="text" id="calc-home-name" value="Nederland" class="calc-input">
+            </div>
+            <div class="form-group">
+              <label for="calc-away-name">Uitploeg</label>
+              <input type="text" id="calc-away-name" value="Duitsland" class="calc-input">
+            </div>
           </div>
         </div>
 
-        <div class="matches-grid" id="tournament-matches-container">
-          <!-- Dynamically populated -->
+        <div class="calc-section">
+          <h3 class="calc-subtitle">1X2 Wedstrijd Odds</h3>
+          <div class="odds-inputs-grid">
+            <div class="form-group">
+              <label for="calc-odds-home">Winst Thuis (1)</label>
+              <input type="number" id="calc-odds-home" value="2.00" step="0.05" min="1.01" class="calc-input">
+            </div>
+            <div class="form-group">
+              <label for="calc-odds-draw">Gelijkspel (X)</label>
+              <input type="number" id="calc-odds-draw" value="3.40" step="0.05" min="1.01" class="calc-input">
+            </div>
+            <div class="form-group">
+              <label for="calc-odds-away">Winst Uit (2)</label>
+              <input type="number" id="calc-odds-away" value="3.50" step="0.05" min="1.01" class="calc-input">
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- RIGHT COLUMN: CUSTOM CALCULATOR -->
-      <div class="column-calculator">
-        <div class="glass sticky-calculator">
-          <h2 class="section-title">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 0.5rem;"><path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/><path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm1 .5v1h6V3H5zm.5 4.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zM5.5 10a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zM5.5 12.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/></svg>
-            Losse Wedstrijd Berekenen
-          </h2>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">
-            Voer handmatig de bookmaker odds van een wedstrijd in om direct de verwachte punten te berekenen.
-          </p>
-
-          <div class="calc-section">
-            <div class="toggle-container">
-              <label class="toggle-label" for="calc-motd">
-                <input type="checkbox" id="calc-motd">
-                <span>Match of the Day (Scorers & dubbele punten)</span>
-              </label>
+        <div class="calc-section">
+          <h3 class="calc-subtitle">Over / Under Doelpunten Odds</h3>
+          <div class="odds-inputs-grid">
+            <div class="form-group">
+              <label for="calc-ou-line">Doelpuntenlijn</label>
+              <select id="calc-ou-line" class="calc-input">
+                <option value="1.5">1.5 goals</option>
+                <option value="2.5" selected>2.5 goals</option>
+                <option value="3.5">3.5 goals</option>
+              </select>
             </div>
-            
-            <div class="calc-team-inputs">
-              <div class="form-group">
-                <label for="calc-home-name">Thuisploeg</label>
-                <input type="text" id="calc-home-name" value="Nederland" class="calc-input">
-              </div>
-              <div class="form-group">
-                <label for="calc-away-name">Uitploeg</label>
-                <input type="text" id="calc-away-name" value="Duitsland" class="calc-input">
-              </div>
+            <div class="form-group">
+              <label for="calc-odds-over">Over Odds</label>
+              <input type="number" id="calc-odds-over" value="1.90" step="0.05" min="1.01" class="calc-input">
+            </div>
+            <div class="form-group">
+              <label for="calc-odds-under">Under Odds</label>
+              <input type="number" id="calc-odds-under" value="1.90" step="0.05" min="1.01" class="calc-input">
+            </div>
+          </div>
+          
+          <div class="api-explanation-note">
+            <h4>💡 Waarom ontbreken Over/Under odds soms?</h4>
+            <p>
+              Bookmakers publiceren Over/Under odds pas kort voor de wedstrijd (meestal 1-2 weken van tevoren). Omdat veel WK-wedstrijden nog ver in de toekomst liggen, leveren APIs (zoals <em>The Odds API</em>) deze gegevens nu nog niet. 
+            </p>
+            <p>
+              <strong>Oplossing:</strong> Als de odds ontbreken, valt de app automatisch terug op een historisch toernooigemiddelde van <strong>2.6 goals</strong> om toch de meest nauwkeurige xPts te kunnen schatten. In een latere fase kunnen we overstappen op geavanceerdere APIs (zoals <em>API-Football</em> of <em>Sportmonks</em>) die vaker vroege marktprognoses aanbieden.
+            </p>
+          </div>
+        </div>
+
+        <div class="calc-result-box">
+          <div class="calc-prediction-section">
+            <h3 class="calc-subtitle" style="margin-bottom: 0.5rem; text-align: center;">Jouw Voorspelling</h3>
+            <div class="prediction-inputs" style="justify-content: center;">
+              <input type="number" id="calc-pred-home" class="score-input" min="0" max="9" value="2">
+              <span style="font-weight: 700; font-size: 1.25rem;">-</span>
+              <input type="number" id="calc-pred-away" class="score-input" min="0" max="9" value="1">
             </div>
           </div>
 
-          <div class="calc-section">
-            <h3 class="calc-subtitle">1X2 Wedstrijd Odds</h3>
-            <div class="odds-inputs-grid">
-              <div class="form-group">
-                <label for="calc-odds-home">Winst Thuis (1)</label>
-                <input type="number" id="calc-odds-home" value="2.00" step="0.05" min="1.01" class="calc-input">
-              </div>
-              <div class="form-group">
-                <label for="calc-odds-draw">Gelijkspel (X)</label>
-                <input type="number" id="calc-odds-draw" value="3.40" step="0.05" min="1.01" class="calc-input">
-              </div>
-              <div class="form-group">
-                <label for="calc-odds-away">Winst Uit (2)</label>
-                <input type="number" id="calc-odds-away" value="3.50" step="0.05" min="1.01" class="calc-input">
-              </div>
-            </div>
+          <div class="xpts-display-card">
+            <div class="xpts-label">Verwachte Punten (xPts)</div>
+            <div class="xpts-value" id="calc-xpts-val">0.00</div>
+            <div class="optimal-tip" id="calc-optimal-tip">Beste voorspelling: - (xPts: -)</div>
           </div>
+        </div>
 
-          <div class="calc-section">
-            <h3 class="calc-subtitle">Over / Under Doelpunten Odds</h3>
-            <div class="odds-inputs-grid">
-              <div class="form-group">
-                <label for="calc-ou-line">Doelpuntenlijn</label>
-                <select id="calc-ou-line" class="calc-input">
-                  <option value="1.5">1.5 goals</option>
-                  <option value="2.5" selected>2.5 goals</option>
-                  <option value="3.5">3.5 goals</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="calc-odds-over">Over Odds</label>
-                <input type="number" id="calc-odds-over" value="1.90" step="0.05" min="1.01" class="calc-input">
-              </div>
-              <div class="form-group">
-                <label for="calc-odds-under">Under Odds</label>
-                <input type="number" id="calc-odds-under" value="1.90" step="0.05" min="1.01" class="calc-input">
-              </div>
-            </div>
+        <div class="distribution-info" style="margin-top: 1rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted);">
+            <span>Verwachte goals: <strong id="calc-exp-goals" style="color:var(--text-primary);">2.5</strong></span>
+            <span>1X2 Kansen: <strong id="calc-win-prob" style="color:var(--text-primary);">H: 45% / X: 27% / A: 28%</strong></span>
           </div>
+        </div>
 
-          <div class="calc-result-box">
-            <div class="calc-prediction-section">
-              <h3 class="calc-subtitle" style="margin-bottom: 0.5rem; text-align: center;">Jouw Voorspelling</h3>
-              <div class="prediction-inputs" style="justify-content: center;">
-                <input type="number" id="calc-pred-home" class="score-input" min="0" max="9" value="2">
-                <span style="font-weight: 700; font-size: 1.25rem;">-</span>
-                <input type="number" id="calc-pred-away" class="score-input" min="0" max="9" value="1">
-              </div>
-            </div>
-
-            <div class="xpts-display-card">
-              <div class="xpts-label">Verwachte Punten (xPts)</div>
-              <div class="xpts-value" id="calc-xpts-val">0.00</div>
-              <div class="optimal-tip" id="calc-optimal-tip">Beste voorspelling: - (xPts: -)</div>
-            </div>
-          </div>
-
-          <div class="distribution-info" style="margin-top: 1rem;">
-            <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted);">
-              <span>Verwachte goals: <strong id="calc-exp-goals" style="color:var(--text-primary);">2.5</strong></span>
-              <span>1X2 Kansen: <strong id="calc-win-prob" style="color:var(--text-primary);">H: 45% / X: 27% / A: 28%</strong></span>
-            </div>
-          </div>
-
-          <!-- TOP PREDICTIONS MATRIX -->
-          <div style="margin-top: 1.5rem;">
-            <h4 style="font-family: var(--font-heading); font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text-light); text-transform: uppercase;">
-              Top 10 Voorspellingen gerangschikt op xPts:
-            </h4>
-            <div style="max-height: 180px; overflow-y: auto; background: rgba(0,0,0,0.2); border-radius: 8px; border: 1px solid var(--card-border);">
-              <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.8rem;" id="calc-top-table">
-                <thead>
-                  <tr style="border-bottom:1px solid var(--card-border); color:var(--text-muted); font-weight:600;">
-                    <th style="padding: 0.4rem 0.5rem;">Stand</th>
-                    <th style="padding: 0.4rem 0.5rem; text-align: center;">Kans (%)</th>
-                    <th style="padding: 0.4rem 0.5rem; text-align: right;">xPts</th>
-                  </tr>
-                </thead>
-                <tbody id="calc-top-tbody">
-                  <!-- Dynamically populated -->
-                </tbody>
-              </table>
-            </div>
+        <!-- TOP PREDICTIONS MATRIX -->
+        <div style="margin-top: 1.5rem;">
+          <h4 style="font-family: var(--font-heading); font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text-light); text-transform: uppercase;">
+            Top 10 Voorspellingen gerangschikt op xPts:
+          </h4>
+          <div style="max-height: 180px; overflow-y: auto; background: rgba(0,0,0,0.2); border-radius: 8px; border: 1px solid var(--card-border);">
+            <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.8rem;" id="calc-top-table">
+              <thead>
+                <tr style="border-bottom:1px solid var(--card-border); color:var(--text-muted); font-weight:600;">
+                  <th style="padding: 0.4rem 0.5rem;">Stand</th>
+                  <th style="padding: 0.4rem 0.5rem; text-align: center;">Kans (%)</th>
+                  <th style="padding: 0.4rem 0.5rem; text-align: right;">xPts</th>
+                </tr>
+              </thead>
+              <tbody id="calc-top-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-
-    </div>
+    </section>
 
   </main>
 

@@ -23,6 +23,7 @@ jobs:
       - name: Run Fetch Script
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
         run: python fetch_data.py
 
       - name: Commit and Push Changes

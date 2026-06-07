@@ -18,17 +18,59 @@ const flagMap = {
   "england": "gb-eng", "croatia": "hr", "ghana": "gh", "panama": "pa"
 };
 
+// Date when predictions for Tournament are frozen (June 11, 2026 18:00 UTC)
+const TOURNAMENT_DEADLINE = new Date("2026-06-11T18:00:00Z");
+
 // Initialization
 document.addEventListener("DOMContentLoaded", async () => {
+  setupTabs();
   loadLocalStorage();
   await loadData();
+  setupCountdown();
   setupFilters();
   setupCustomCalculator();
   setupDashboardActions();
   renderAll();
 });
 
-// Load match and group data
+// Navigation Tabs Setup
+function setupTabs() {
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+      
+      btn.classList.add("active");
+      const tabId = btn.getAttribute("data-tab");
+      document.getElementById(tabId).classList.add("active");
+    });
+  });
+}
+
+// Countdown Clock Setup
+function setupCountdown() {
+  const counterText = document.getElementById("countdown-text");
+  
+  function updateTimer() {
+    const now = new Date();
+    const diff = TOURNAMENT_DEADLINE - now;
+    
+    if (diff <= 0) {
+      counterText.textContent = "Toernooi gestart!";
+      clearInterval(timerInterval);
+    } else {
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      counterText.textContent = `Start in: ${days}d ${hours}u ${mins}m`;
+    }
+  }
+
+  updateTimer();
+  const timerInterval = setInterval(updateTimer, 60000);
+}
+
+// Load match data
 async function loadData() {
   try {
     const response = await fetch("data/wc2026.json?t=" + new Date().getTime());
@@ -109,10 +151,8 @@ function estimateExpectedGoals(line, overOdds, underOdds) {
     let mid = (low + high) / 2;
     let val = poissonCDF(mid, n);
     if (val > pUnder) {
-      // mid is too small
       low = mid;
     } else {
-      // mid is too large
       high = mid;
     }
     iterations++;
@@ -223,7 +263,6 @@ function calculateExpectedPoints(predHome, predAway, isMotd, probMatrix) {
         } else if (predHome === predAway && h === a) {
           scorePts = 8; // draw correct, but wrong goals
         } else {
-          // winner correct
           const isPredHomeWin = predHome > predAway;
           const isPredAwayWin = predAway > predHome;
           const isActualHomeWin = h > a;
@@ -235,10 +274,7 @@ function calculateExpectedPoints(predHome, predAway, isMotd, probMatrix) {
           }
         }
 
-        // Scorer correct probabilities:
-        // Assume player name is selected.
-        // If predicted 0 goals for a team, user predicted "No score", which is correct with prob 1.0 if actual is 0 goals.
-        // If predicted > 0 goals, user predicted a player, which is correct with prob 1/3 if actual goals > 0.
+        // Scorer correct probabilities (1 in 3 chance if team scores, 1.0 if team scores 0 goals)
         let pHScorer = 0;
         if (predHome === 0) {
           pHScorer = (h === 0) ? 1.0 : 0.0;
@@ -253,8 +289,7 @@ function calculateExpectedPoints(predHome, predAway, isMotd, probMatrix) {
           pAScorer = (a > 0) ? (1.0 / 3.0) : 0.0;
         }
 
-        // Expected score and scorer points with a 20 pts cap:
-        // Scenarios for scorer points (+4 pts for each correct scorer, capped at 20)
+        // Expected score and scorer points with 20 pts cap:
         const pointsBoth = Math.min(20, scorePts + 8);
         const pointsHomeOnly = Math.min(20, scorePts + 4);
         const pointsAwayOnly = Math.min(20, scorePts + 4);
@@ -384,7 +419,6 @@ function updateCustomCalculator() {
       </td>
     `;
     
-    // Allow clicking the row to quickly set that prediction in the calculator
     tr.style.cursor = "pointer";
     tr.addEventListener("click", () => {
       document.getElementById("calc-pred-home").value = opt.home;
@@ -404,8 +438,11 @@ function setupCustomCalculator() {
     "calc-pred-home", "calc-pred-away"
   ];
   ids.forEach(id => {
-    document.getElementById(id).addEventListener("input", updateCustomCalculator);
-    document.getElementById(id).addEventListener("change", updateCustomCalculator);
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("input", updateCustomCalculator);
+      el.addEventListener("change", updateCustomCalculator);
+    }
   });
 }
 
@@ -451,6 +488,41 @@ function setupDashboardActions() {
     savePredictions();
     renderAll();
     showToast("Alle voorspellingen gewist.");
+  });
+
+  // Copy predictions to clipboard
+  document.getElementById("btn-copy-predictions").addEventListener("click", () => {
+    if (!tournamentData || !tournamentData.matches) return;
+
+    let text = "=== MIJN WK 2026 VOORSPELLINGEN ===\n\n";
+    let count = 0;
+
+    tournamentData.matches.forEach(m => {
+      const pred = userPredictions[m.id];
+      if (pred && pred.homeScore !== "" && pred.homeScore !== undefined) {
+        const results = calculateScoreProbabilities(m.odds);
+        const xPts = calculateExpectedPoints(parseInt(pred.homeScore), parseInt(pred.awayScore), m.match_of_the_day, results.matrix);
+        
+        text += `${m.home_team} - ${m.away_team}: ${pred.homeScore}-${pred.awayScore}`;
+        if (m.match_of_the_day) {
+          text += " [MOTD]";
+        }
+        text += ` (xPts: ${xPts.toFixed(2)} pt)\n`;
+        count++;
+      }
+    });
+
+    if (count === 0) {
+      showToast("Geen voorspellingen ingevuld om te kopiëren!");
+      return;
+    }
+
+    navigator.clipboard.writeText(text).then(() => {
+      showToast("Voorspellingen gekopieerd naar klembord!");
+    }).catch(err => {
+      console.error("Copy failed", err);
+      showToast("Kopiëren mislukt, probeer handmatig.");
+    });
   });
 }
 
@@ -581,18 +653,6 @@ function renderMatches() {
             if (pH === aH) actualPts += 2;
             if (pA === aA) actualPts += 2;
           }
-          // Assuming scorer was predicted optimally or correctly.
-          // In actual matches, the scraper/admin logs home_first_scorer & away_first_scorer.
-          // Since we assumed 1/3 scorer chance for xPts, let's keep actual scoring correct against logged scorer in JSON.
-          if (m.home_first_scorer && pred.homeScore > 0) {
-            // Wait, we don't store scorer names anymore, so let's check if actual scorer was logged
-            // If actual scored > 0 and user predicted > 0, we can credit them with points if they got it right,
-            // but since player name isn't stored anymore, let's assume they don't get scorer points automatically or let's mock it
-            // as 1/3 chance, or simply ignore it for actual points to avoid clutter, or let's just calculate score points.
-            // Let's check how it is in data:
-            // Since we stripped player name inputs, we don't have user scorer choices anymore.
-            // So we only calculate points for score correctness.
-          }
           actualPts = Math.min(20, actualPts);
         } else {
           if (isExactScore) actualPts = 10;
@@ -689,14 +749,12 @@ function renderMatches() {
       }
       savePredictions();
       
-      // Update this card's xPts display immediately without rendering all
       const hasPred = homeInput.value !== "" && awayInput.value !== "";
       const xnum = card.querySelector(".xpts-num");
       if (hasPred) {
         const x = calculateExpectedPoints(parseInt(homeInput.value), parseInt(awayInput.value), m.match_of_the_day, results.matrix);
         xnum.textContent = x.toFixed(2) + " pt";
         
-        // Highlight opt button if matched
         const isMatched = parseInt(homeInput.value) === optimal.home && parseInt(awayInput.value) === optimal.away;
         if (isMatched) {
           optBtn.classList.add("active");

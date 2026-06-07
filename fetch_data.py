@@ -11,6 +11,7 @@ from datetime import datetime
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 DATA_FILE = os.path.join(DATA_DIR, 'wc2026.json')
 ODDS_API_KEY = os.environ.get('ODDS_API_KEY', '')
+API_FOOTBALL_KEY = os.environ.get('API_FOOTBALL_KEY', '')
 SPORT_KEY = 'soccer_fifa_world_cup'
 
 # 48 teams divided into 12 groups
@@ -253,66 +254,126 @@ def scrape_wikipedia(html_content, stats):
         
     return stats
 
-def update_odds_and_scores(data):
-    if not ODDS_API_KEY:
-        print("ODDS_API_KEY not set. Skipping Odds API update.")
-        return data
-        
-    # Fetch Odds
-    odds_url = f"https://api.the-odds-api.com/v4/sports/{SPORT_KEY}/odds/?apiKey={ODDS_API_KEY}&regions=eu&markets=h2h,totals"
-    print(f"Fetching odds from Odds API...")
-    odds_json = fetch_json(odds_url)
+def fetch_api_football_odds(api_key):
+    if not api_key:
+        print("API_FOOTBALL_KEY not set. Skipping API-Football update.")
+        return {}
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0',
+        'x-apisports-key': api_key
+    }
+
+    # 1. Fetch fixtures mapping (league 1 is World Cup)
+    fixtures_url = "https://v3.football.api-sports.io/fixtures?league=1&season=2026"
+    print("Fetching fixtures from API-Football...")
     
-    # Fetch Scores
-    scores_url = f"https://api.the-odds-api.com/v4/sports/{SPORT_KEY}/scores/?apiKey={ODDS_API_KEY}&daysFrom=3"
-    print(f"Fetching scores from Odds API...")
-    scores_json = fetch_json(scores_url)
+    req_fixtures = urllib.request.Request(fixtures_url, headers=headers)
+    try:
+        with urllib.request.urlopen(req_fixtures, timeout=15) as response:
+            fixtures_json = json.loads(response.read().decode('utf-8'))
+    except Exception as e:
+        print(f"Failed to fetch fixtures from API-Football: {e}")
+        return {}
+
+    if not fixtures_json or fixtures_json.get("errors") or not fixtures_json.get("response"):
+        print(f"API-Football fixtures returned error or empty response: {fixtures_json.get('errors')}")
+        return {}
+
+    fixture_map = {}
+    for item in fixtures_json["response"]:
+        fid = str(item["fixture"]["id"])
+        home = item.get("teams", {}).get("home", {}).get("name")
+        away = item.get("teams", {}).get("away", {}).get("name")
+        if home and away:
+            fixture_map[fid] = {
+                "home": normalize_team_name(home),
+                "away": normalize_team_name(away)
+            }
+
+    # 2. Fetch odds
+    odds_url = "https://v3.football.api-sports.io/odds?league=1&season=2026"
+    print("Fetching odds from API-Football...")
     
-    odds_by_match = {}
-    if odds_json:
-        for match in odds_json:
-            home = normalize_team_name(match.get("home_team"))
-            away = normalize_team_name(match.get("away_team"))
+    req_odds = urllib.request.Request(odds_url, headers=headers)
+    try:
+        with urllib.request.urlopen(req_odds, timeout=15) as response:
+            odds_json = json.loads(response.read().decode('utf-8'))
+    except Exception as e:
+        print(f"Failed to fetch odds from API-Football: {e}")
+        return {}
+
+    if not odds_json or odds_json.get("errors") or not odds_json.get("response"):
+        print(f"API-Football odds returned error or empty response: {odds_json.get('errors')}")
+        return {}
+
+    api_football_odds = {}
+
+    for item in odds_json["response"]:
+        fid = str(item["fixture"]["id"])
+        if fid not in fixture_map:
+            continue
             
-            # Find bookmaker odds (average or first bookmaker)
-            h2h_odds = {"home": 2.2, "draw": 3.2, "away": 3.2}
-            totals_odds = None
-            bookmakers = match.get("bookmakers", [])
-            if bookmakers:
-                # Use the first available bookmaker (e.g. Unibet, Bet365)
-                markets = bookmakers[0].get("markets", [])
-                for market in markets:
-                    market_key = market.get("key")
-                    outcomes = market.get("outcomes", [])
-                    if market_key == "h2h":
-                        for outcome in outcomes:
-                            name = outcome.get("name")
-                            price = outcome.get("price")
-                            if name == match.get("home_team"):
-                                h2h_odds["home"] = price
-                            elif name == match.get("away_team"):
-                                h2h_odds["away"] = price
-                            else:
-                                h2h_odds["draw"] = price
-                    elif market_key == "totals":
-                        over_odds = None
-                        under_odds = None
-                        point = None
-                        for outcome in outcomes:
-                            name = outcome.get("name")
-                            price = outcome.get("price")
-                            point = outcome.get("point")
-                            if name == "Over":
-                                over_odds = price
-                            elif name == "Under":
-                                under_odds = price
-                        if over_odds is not None and under_odds is not None and point is not None:
-                            totals_odds = {
-                                "line": point,
-                                "over": over_odds,
-                                "under": under_odds
-                            }
+        teams = fixture_map[fid]
+        home = teams["home"]
+        away = teams["away"]
+        key = f"{home}:{away}"
+
+        bookmakers = item.get("bookmakers", [])
+        if not bookmakers:
+            continue
+
+        # Prefer Bet365 if available, otherwise first bookmaker
+        selected_bm = None
+        for bm in bookmakers:
+            if bm.get("name") == "Bet365":
+                selected_bm = bm
+                break
+        if not selected_bm:
+            selected_bm = bookmakers[0]
+
+        h2h_odds = None
+        totals_odds = None
+
+        for bet in selected_bm.get("bets", []):
+            bet_name = bet.get("name")
+            outcomes = bet.get("values", [])
             
+            if bet_name == "Match Winner":
+                h2h_odds = {"home": 2.2, "draw": 3.2, "away": 3.2}
+                for outcome in outcomes:
+                    val = outcome.get("value")
+                    try:
+                        odd = float(outcome.get("odd"))
+                    except:
+                        continue
+                    if val in ["Home", "1", home]:
+                        h2h_odds["home"] = odd
+                    elif val in ["Draw", "N", "X"]:
+                        h2h_odds["draw"] = odd
+                    elif val in ["Away", "2", away]:
+                        h2h_odds["away"] = odd
+            elif bet_name == "Goals Over/Under":
+                over_odd = None
+                under_odd = None
+                for outcome in outcomes:
+                    val = outcome.get("value")
+                    try:
+                        odd = float(outcome.get("odd"))
+                    except:
+                        continue
+                    if val == "Over 2.5":
+                        over_odd = odd
+                    elif val == "Under 2.5":
+                        under_odd = odd
+                if over_odd is not None and under_odd is not None:
+                    totals_odds = {
+                        "line": 2.5,
+                        "over": over_odd,
+                        "under": under_odd
+                    }
+
+        if h2h_odds:
             match_odds = {
                 "home": h2h_odds["home"],
                 "draw": h2h_odds["draw"],
@@ -323,26 +384,107 @@ def update_odds_and_scores(data):
             else:
                 match_odds["totals"] = {"line": 2.5, "over": 1.9, "under": 1.9}
             
-            odds_by_match[f"{home}:{away}"] = {
-                "odds": match_odds,
-                "date": match.get("commence_time")
-            }
-            
+            api_football_odds[key] = match_odds
+
+    return api_football_odds
+
+def update_odds_and_scores(data):
+    if not ODDS_API_KEY and not API_FOOTBALL_KEY:
+        print("Neither ODDS_API_KEY nor API_FOOTBALL_KEY is set. Skipping Odds update.")
+        return data
+        
+    # Fetch Odds from The Odds API if available
+    odds_json = None
+    odds_by_match = {}
+    if ODDS_API_KEY:
+        # Fetch Odds
+        odds_url = f"https://api.the-odds-api.com/v4/sports/{SPORT_KEY}/odds/?apiKey={ODDS_API_KEY}&regions=eu&markets=h2h,totals"
+        print(f"Fetching odds from Odds API...")
+        odds_json = fetch_json(odds_url)
+        
+        if odds_json:
+            for match in odds_json:
+                home = normalize_team_name(match.get("home_team"))
+                away = normalize_team_name(match.get("away_team"))
+                
+                # Find bookmaker odds (average or first bookmaker)
+                h2h_odds = {"home": 2.2, "draw": 3.2, "away": 3.2}
+                totals_odds = None
+                bookmakers = match.get("bookmakers", [])
+                if bookmakers:
+                    markets = bookmakers[0].get("markets", [])
+                    for market in markets:
+                        market_key = market.get("key")
+                        outcomes = market.get("outcomes", [])
+                        if market_key == "h2h":
+                            for outcome in outcomes:
+                                name = outcome.get("name")
+                                price = outcome.get("price")
+                                if name == match.get("home_team"):
+                                    h2h_odds["home"] = price
+                                elif name == match.get("away_team"):
+                                    h2h_odds["away"] = price
+                                else:
+                                    h2h_odds["draw"] = price
+                        elif market_key == "totals":
+                            over_odds = None
+                            under_odds = None
+                            point = None
+                            for outcome in outcomes:
+                                name = outcome.get("name")
+                                price = outcome.get("price")
+                                point = outcome.get("point")
+                                if name == "Over":
+                                    over_odds = price
+                                elif name == "Under":
+                                    under_odds = price
+                            if over_odds is not None and under_odds is not None and point is not None:
+                                totals_odds = {
+                                    "line": point,
+                                    "over": over_odds,
+                                    "under": under_odds
+                                }
+                
+                match_odds = {
+                    "home": h2h_odds["home"],
+                    "draw": h2h_odds["draw"],
+                    "away": h2h_odds["away"]
+                }
+                if totals_odds:
+                    match_odds["totals"] = totals_odds
+                else:
+                    match_odds["totals"] = {"line": 2.5, "over": 1.9, "under": 1.9}
+                
+                odds_by_match[f"{home}:{away}"] = {
+                    "odds": match_odds,
+                    "date": match.get("commence_time")
+                }
+
+    # Fetch Scores from The Odds API if available
     scores_by_match = {}
-    if scores_json:
-        for match in scores_json:
-            home = normalize_team_name(match.get("home_team"))
-            away = normalize_team_name(match.get("away_team"))
-            
-            actual_score = None
-            if match.get("completed"):
-                scores = match.get("scores")
-                if scores and len(scores) == 2:
-                    h_score = int(scores[0]["score"]) if scores[0]["name"] == match.get("home_team") else int(scores[1]["score"])
-                    a_score = int(scores[1]["score"]) if scores[1]["name"] == match.get("away_team") else int(scores[0]["score"])
-                    actual_score = {"home": h_score, "away": a_score}
-                    
-            scores_by_match[f"{home}:{away}"] = actual_score
+    if ODDS_API_KEY:
+        scores_url = f"https://api.the-odds-api.com/v4/sports/{SPORT_KEY}/scores/?apiKey={ODDS_API_KEY}&daysFrom=3"
+        print(f"Fetching scores from Odds API...")
+        scores_json = fetch_json(scores_url)
+        if scores_json:
+            for match in scores_json:
+                home = normalize_team_name(match.get("home_team"))
+                away = normalize_team_name(match.get("away_team"))
+                
+                actual_score = None
+                if match.get("completed"):
+                    scores = match.get("scores")
+                    if scores and len(scores) == 2:
+                        h_score = int(scores[0]["score"]) if scores[0]["name"] == match.get("home_team") else int(scores[1]["score"])
+                        a_score = int(scores[1]["score"]) if scores[1]["name"] == match.get("away_team") else int(scores[0]["score"])
+                        actual_score = {"home": h_score, "away": a_score}
+                        
+                scores_by_match[f"{home}:{away}"] = actual_score
+
+    # Fetch Odds from API-Football if available
+    api_football_odds = {}
+    if API_FOOTBALL_KEY:
+        api_football_odds = fetch_api_football_odds(API_FOOTBALL_KEY)
 
     # Update our matches list
     for match in data["matches"]:
@@ -352,20 +494,38 @@ def update_odds_and_scores(data):
         rev_key = f"{away}:{home}"
         
         # Match normal key or reversed key
-        if key in odds_by_match:
-            match["odds"] = odds_by_match[key]["odds"]
-            match["date"] = odds_by_match[key]["date"]
-        elif rev_key in odds_by_match:
-            # Swap home/away odds
-            odds = odds_by_match[rev_key]["odds"]
-            match["odds"] = {
-                "home": odds["away"],
-                "draw": odds["draw"],
-                "away": odds["home"]
-            }
-            if "totals" in odds:
-                match["odds"]["totals"] = odds["totals"]
-            match["date"] = odds_by_match[rev_key]["date"]
+        odds_applied = False
+        if api_football_odds:
+            if key in api_football_odds:
+                match["odds"] = api_football_odds[key]
+                odds_applied = True
+            elif rev_key in api_football_odds:
+                # Swap home/away odds
+                odds = api_football_odds[rev_key]
+                match["odds"] = {
+                    "home": odds["away"],
+                    "draw": odds["draw"],
+                    "away": odds["home"]
+                }
+                if "totals" in odds:
+                    match["odds"]["totals"] = odds["totals"]
+                odds_applied = True
+
+        if not odds_applied:
+            if key in odds_by_match:
+                match["odds"] = odds_by_match[key]["odds"]
+                match["date"] = odds_by_match[key]["date"]
+            elif rev_key in odds_by_match:
+                # Swap home/away odds
+                odds = odds_by_match[rev_key]["odds"]
+                match["odds"] = {
+                    "home": odds["away"],
+                    "draw": odds["draw"],
+                    "away": odds["home"]
+                }
+                if "totals" in odds:
+                    match["odds"]["totals"] = odds["totals"]
+                match["date"] = odds_by_match[rev_key]["date"]
             
         if key in scores_by_match:
             match["actual_score"] = scores_by_match[key]
