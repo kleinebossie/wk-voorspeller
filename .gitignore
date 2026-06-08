@@ -1,2 +1,4 @@
 PLAN.md
 .agents
+__pycache__/
+*.pyc
