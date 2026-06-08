@@ -245,98 +245,108 @@ function calculateScoreProbabilities(odds) {
   };
 }
 
-// Calculate expected points (xPts) for a prediction
-function calculateExpectedPoints(predHome, predAway, isMotd, probMatrix) {
-  let expectedPoints = 0;
+/**
+ * Pre-calculates aggregate probability values from the score matrix
+ * to allow O(1) expected points calculation.
+ */
+function getMatrixAggregates(probMatrix) {
   const maxGoals = probMatrix.length - 1;
+  const aggregates = {
+    pHomeWin: 0, pAwayWin: 0, pDraw: 0,
+    pHomeGoalsWin: new Float64Array(maxGoals + 1),
+    pAwayGoalsWin: new Float64Array(maxGoals + 1),
+    pHomeGoalsAwayWin: new Float64Array(maxGoals + 1),
+    pAwayGoalsAwayWin: new Float64Array(maxGoals + 1),
+    pHomeGoalsTotal: new Float64Array(maxGoals + 1),
+    pAwayGoalsTotal: new Float64Array(maxGoals + 1)
+  };
 
   for (let h = 0; h <= maxGoals; h++) {
     for (let a = 0; a <= maxGoals; a++) {
-      const pScore = probMatrix[h][a];
-      if (pScore === 0) continue;
+      const p = probMatrix[h][a];
+      if (p === 0) continue;
 
-      let scorePts = 0;
-      if (isMotd) {
-        // Match of the Day Scoring
-        if (predHome === h && predAway === a) {
-          scorePts = 12; // exact score correct
-        } else if (predHome === predAway && h === a) {
-          scorePts = 8; // draw correct, but wrong goals
-        } else {
-          const isPredHomeWin = predHome > predAway;
-          const isPredAwayWin = predAway > predHome;
-          const isActualHomeWin = h > a;
-          const isActualAwayWin = a > h;
-          if ((isPredHomeWin && isActualHomeWin) || (isPredAwayWin && isActualAwayWin)) {
-            scorePts = 6;
-            if (predHome === h) scorePts += 2;
-            if (predAway === a) scorePts += 2;
-          }
-        }
+      aggregates.pHomeGoalsTotal[h] += p;
+      aggregates.pAwayGoalsTotal[a] += p;
 
-        // Scorer correct probabilities (1 in 3 chance if team scores, 1.0 if team scores 0 goals)
-        let pHScorer = 0;
-        if (predHome === 0) {
-          pHScorer = (h === 0) ? 1.0 : 0.0;
-        } else {
-          pHScorer = (h > 0) ? (1.0 / 3.0) : 0.0;
-        }
-
-        let pAScorer = 0;
-        if (predAway === 0) {
-          pAScorer = (a === 0) ? 1.0 : 0.0;
-        } else {
-          pAScorer = (a > 0) ? (1.0 / 3.0) : 0.0;
-        }
-
-        // Expected score and scorer points with 20 pts cap:
-        const pointsBoth = Math.min(20, scorePts + 8);
-        const pointsHomeOnly = Math.min(20, scorePts + 4);
-        const pointsAwayOnly = Math.min(20, scorePts + 4);
-        const pointsNeither = Math.min(20, scorePts);
-
-        const expectedScoreAndScorerPts = 
-          (pHScorer * pAScorer * pointsBoth) +
-          (pHScorer * (1 - pAScorer) * pointsHomeOnly) +
-          ((1 - pHScorer) * pAScorer * pointsAwayOnly) +
-          ((1 - pHScorer) * (1 - pAScorer) * pointsNeither);
-
-        expectedPoints += pScore * expectedScoreAndScorerPts;
+      if (h > a) {
+        aggregates.pHomeWin += p;
+        aggregates.pHomeGoalsWin[h] += p;
+        aggregates.pAwayGoalsWin[a] += p;
+      } else if (h < a) {
+        aggregates.pAwayWin += p;
+        aggregates.pHomeGoalsAwayWin[h] += p;
+        aggregates.pAwayGoalsAwayWin[a] += p;
       } else {
-        // Regular Match Scoring
-        if (predHome === h && predAway === a) {
-          scorePts = 10;
-        } else if (predHome === predAway && h === a) {
-          scorePts = 7;
-        } else {
-          const isPredHomeWin = predHome > predAway;
-          const isPredAwayWin = predAway > predHome;
-          const isActualHomeWin = h > a;
-          const isActualAwayWin = a > h;
-          if ((isPredHomeWin && isActualHomeWin) || (isPredAwayWin && isActualAwayWin)) {
-            scorePts = 5;
-            if (predHome === h) scorePts += 2;
-            if (predAway === a) scorePts += 2;
-          }
-        }
-        scorePts = Math.min(10, scorePts);
-        expectedPoints += pScore * scorePts;
+        aggregates.pDraw += p;
       }
     }
   }
+  return aggregates;
+}
 
-  return expectedPoints;
+/**
+ * Optimized O(1) expected points calculation using pre-calculated aggregates.
+ */
+function calculateExpectedPointsFast(predHome, predAway, isMotd, probMatrix, aggregates) {
+  const maxGoals = probMatrix.length - 1;
+  let xPts = 0;
+  const probExact = (predHome <= maxGoals && predAway <= maxGoals) ? probMatrix[predHome][predAway] : 0;
+
+  if (isMotd) {
+    // Scorer bonus: 4 pts if team scores, 0 if not (expected value calculation)
+    // predHome == 0 -> bonus if h == 0. predHome > 0 -> bonus (1/3) if h > 0.
+    const eHScorer = (predHome === 0) ? aggregates.pHomeGoalsTotal[0] : (1/3.0) * (1 - aggregates.pHomeGoalsTotal[0]);
+    const eAScorer = (predAway === 0) ? aggregates.pAwayGoalsTotal[0] : (1/3.0) * (1 - aggregates.pAwayGoalsTotal[0]);
+    xPts += 4 * (eHScorer + eAScorer);
+
+    if (predHome === predAway) {
+      // Draw: 8 pts for draw, +4 for exact score (total 12)
+      xPts += 8 * aggregates.pDraw + 4 * probExact;
+    } else if (predHome > predAway) {
+      // Home Win: 6 pts for outcome, +2 for each correct goal, +2 more for exact score (total 12 if exact)
+      xPts += 6 * aggregates.pHomeWin +
+             2 * (predHome <= maxGoals ? aggregates.pHomeGoalsWin[predHome] : 0) +
+             2 * (predAway <= maxGoals ? aggregates.pAwayGoalsWin[predAway] : 0) +
+             2 * probExact;
+    } else {
+      // Away Win
+      xPts += 6 * aggregates.pAwayWin +
+             2 * (predHome <= maxGoals ? aggregates.pHomeGoalsAwayWin[predHome] : 0) +
+             2 * (predAway <= maxGoals ? aggregates.pAwayGoalsAwayWin[predAway] : 0) +
+             2 * probExact;
+    }
+  } else {
+    if (predHome === predAway) {
+      // Draw: 7 pts for draw, +3 for exact score (total 10)
+      xPts += 7 * aggregates.pDraw + 3 * probExact;
+    } else if (predHome > predAway) {
+      // Home Win: 5 pts for outcome, +2 for each correct goal, +1 more for exact score (total 10)
+      xPts += 5 * aggregates.pHomeWin +
+             2 * (predHome <= maxGoals ? aggregates.pHomeGoalsWin[predHome] : 0) +
+             2 * (predAway <= maxGoals ? aggregates.pAwayGoalsWin[predAway] : 0) +
+             probExact;
+    } else {
+      // Away Win
+      xPts += 5 * aggregates.pAwayWin +
+             2 * (predHome <= maxGoals ? aggregates.pHomeGoalsAwayWin[predHome] : 0) +
+             2 * (predAway <= maxGoals ? aggregates.pAwayGoalsAwayWin[predAway] : 0) +
+             probExact;
+    }
+  }
+  return xPts;
 }
 
 // Find optimal score prediction that maximizes expected points
-function findOptimalPrediction(isMotd, probMatrix) {
+function findOptimalPrediction(isMotd, probMatrix, aggregates = null) {
+  if (!aggregates) aggregates = getMatrixAggregates(probMatrix);
   let maxXPts = -1;
   let optimalH = 1;
   let optimalA = 1;
 
   for (let h = 0; h <= 5; h++) {
     for (let a = 0; a <= 5; a++) {
-      const xPts = calculateExpectedPoints(h, a, isMotd, probMatrix);
+      const xPts = calculateExpectedPointsFast(h, a, isMotd, probMatrix, aggregates);
       if (xPts > maxXPts) {
         maxXPts = xPts;
         optimalH = h;
@@ -374,8 +384,9 @@ function updateCustomCalculator() {
   };
 
   const results = calculateScoreProbabilities(odds);
-  const xPts = calculateExpectedPoints(predH, predA, isMotd, results.matrix);
-  const optimal = findOptimalPrediction(isMotd, results.matrix);
+  const aggregates = getMatrixAggregates(results.matrix);
+  const xPts = calculateExpectedPointsFast(predH, predA, isMotd, results.matrix, aggregates);
+  const optimal = findOptimalPrediction(isMotd, results.matrix, aggregates);
 
   // Update DOM values
   document.getElementById("calc-xpts-val").textContent = xPts.toFixed(2) + " pt";
@@ -394,7 +405,7 @@ function updateCustomCalculator() {
         home: h,
         away: a,
         prob: results.matrix[h]?.[a] || 0,
-        xPts: calculateExpectedPoints(h, a, isMotd, results.matrix)
+        xPts: calculateExpectedPointsFast(h, a, isMotd, results.matrix, aggregates)
       });
     }
   }
@@ -470,7 +481,8 @@ function setupDashboardActions() {
     
     tournamentData.matches.forEach(m => {
       const results = calculateScoreProbabilities(m.odds);
-      const optimal = findOptimalPrediction(m.match_of_the_day, results.matrix);
+      const aggregates = getMatrixAggregates(results.matrix);
+      const optimal = findOptimalPrediction(m.match_of_the_day, results.matrix, aggregates);
       userPredictions[m.id] = {
         homeScore: optimal.home,
         awayScore: optimal.away
@@ -501,7 +513,8 @@ function setupDashboardActions() {
       const pred = userPredictions[m.id];
       if (pred && pred.homeScore !== "" && pred.homeScore !== undefined) {
         const results = calculateScoreProbabilities(m.odds);
-        const xPts = calculateExpectedPoints(parseInt(pred.homeScore), parseInt(pred.awayScore), m.match_of_the_day, results.matrix);
+        const aggregates = getMatrixAggregates(results.matrix);
+        const xPts = calculateExpectedPointsFast(parseInt(pred.homeScore), parseInt(pred.awayScore), m.match_of_the_day, results.matrix, aggregates);
         
         text += `${m.home_team} - ${m.away_team}: ${pred.homeScore}-${pred.awayScore}`;
         if (m.match_of_the_day) {
@@ -538,11 +551,12 @@ function updateDashboardStats() {
     tournamentData.matches.forEach(m => {
       const pred = userPredictions[m.id];
       const results = calculateScoreProbabilities(m.odds);
-      const optimal = findOptimalPrediction(m.match_of_the_day, results.matrix);
+      const aggregates = getMatrixAggregates(results.matrix);
+      const optimal = findOptimalPrediction(m.match_of_the_day, results.matrix, aggregates);
 
       if (pred && pred.homeScore !== "" && pred.homeScore !== undefined) {
         predictedCount++;
-        const xPts = calculateExpectedPoints(parseInt(pred.homeScore), parseInt(pred.awayScore), m.match_of_the_day, results.matrix);
+        const xPts = calculateExpectedPointsFast(parseInt(pred.homeScore), parseInt(pred.awayScore), m.match_of_the_day, results.matrix, aggregates);
         totalXPts += xPts;
 
         if (parseInt(pred.homeScore) === optimal.home && parseInt(pred.awayScore) === optimal.away) {
@@ -612,12 +626,13 @@ function renderMatches() {
 
     // Poisson probabilities & optimal prediction
     const results = calculateScoreProbabilities(m.odds);
-    const optimal = findOptimalPrediction(m.match_of_the_day, results.matrix);
+    const aggregates = getMatrixAggregates(results.matrix);
+    const optimal = findOptimalPrediction(m.match_of_the_day, results.matrix, aggregates);
 
     let liveXPts = 0;
     const hasPrediction = pred.homeScore !== "" && pred.homeScore !== undefined;
     if (hasPrediction) {
-      liveXPts = calculateExpectedPoints(parseInt(pred.homeScore), parseInt(pred.awayScore), m.match_of_the_day, results.matrix);
+      liveXPts = calculateExpectedPointsFast(parseInt(pred.homeScore), parseInt(pred.awayScore), m.match_of_the_day, results.matrix, aggregates);
     }
 
     // Actual score & points if played
@@ -752,7 +767,7 @@ function renderMatches() {
       const hasPred = homeInput.value !== "" && awayInput.value !== "";
       const xnum = card.querySelector(".xpts-num");
       if (hasPred) {
-        const x = calculateExpectedPoints(parseInt(homeInput.value), parseInt(awayInput.value), m.match_of_the_day, results.matrix);
+        const x = calculateExpectedPointsFast(parseInt(homeInput.value), parseInt(awayInput.value), m.match_of_the_day, results.matrix, aggregates);
         xnum.textContent = x.toFixed(2) + " pt";
         
         const isMatched = parseInt(homeInput.value) === optimal.home && parseInt(awayInput.value) === optimal.away;
