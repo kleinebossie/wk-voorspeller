@@ -2,6 +2,21 @@
 let tournamentData = null;
 let userPredictions = {}; // matchId -> { homeScore, awayScore }
 
+/**
+ * Debounce helper to limit function execution rate
+ */
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 // Constant Flag Mapping
 const flagMap = {
   "mexico": "mx", "south africa": "za", "south korea": "kr", "czechia": "cz",
@@ -451,9 +466,13 @@ let searchQuery = "";
 let selectedRound = "all";
 
 function setupFilters() {
+  const debouncedRender = debounce(() => {
+    renderMatches();
+  }, 250);
+
   document.getElementById("match-search").addEventListener("input", (e) => {
     searchQuery = e.target.value.toLowerCase().trim();
-    renderMatches();
+    debouncedRender();
   });
 
   document.getElementById("match-round-filter").addEventListener("change", (e) => {
