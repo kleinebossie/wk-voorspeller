@@ -103,13 +103,19 @@ function savePredictions() {
   updateDashboardStats();
 }
 
-// Factorial helper
-function factorial(n) {
-  if (n === 0 || n === 1) return 1;
-  let res = 1;
-  for (let i = 2; i <= n; i++) res *= i;
-  return res;
-}
+// Factorial helper with memoization
+const factorial = (function() {
+  const cache = [1, 1];
+  return function(n) {
+    const num = Math.floor(n);
+    if (num < 0) return 1;
+    if (cache[num] !== undefined) return cache[num];
+    for (let i = cache.length; i <= num; i++) {
+      cache[i] = cache[i - 1] * i;
+    }
+    return cache[num];
+  };
+})();
 
 // Estimate expected goals from over/under odds using Poisson CDF and binary search
 function estimateExpectedGoals(line, overOdds, underOdds) {
