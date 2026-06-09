@@ -175,9 +175,9 @@
       "away_team": "Qatar",
       "date": "2026-06-18T22:00:00Z",
       "odds": {
-        "home": 1.28,
-        "draw": 4.7,
-        "away": 8.0,
+        "home": 1.26,
+        "draw": 4.9,
+        "away": 8.5,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -280,9 +280,9 @@
       "away_team": "Scotland",
       "date": "2026-06-14T01:00:00Z",
       "odds": {
-        "home": 6.65,
-        "draw": 4.55,
-        "away": 1.51,
+        "home": 6.35,
+        "draw": 4.45,
+        "away": 1.54,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -386,8 +386,8 @@
       "date": "2026-06-13T01:00:00Z",
       "odds": {
         "home": 2.01,
-        "draw": 3.5,
-        "away": 4.05,
+        "draw": 3.52,
+        "away": 4.0,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -406,9 +406,9 @@
       "away_team": "Turkey",
       "date": "2026-06-14T04:00:00Z",
       "odds": {
-        "home": 4.75,
-        "draw": 3.75,
-        "away": 1.8,
+        "home": 5.0,
+        "draw": 3.85,
+        "away": 1.75,
         "totals": {
           "line": 2.5,
           "over": 2.0,
@@ -428,8 +428,8 @@
       "date": "2026-06-19T19:00:00Z",
       "odds": {
         "home": 1.76,
-        "draw": 4.1,
-        "away": 4.6,
+        "draw": 4.0,
+        "away": 4.5,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -511,9 +511,9 @@
       "away_team": "Curacao",
       "date": "2026-06-14T17:00:00Z",
       "odds": {
-        "home": 1.04,
-        "draw": 17.0,
-        "away": 61.0,
+        "home": 1.05,
+        "draw": 16.5,
+        "away": 56.0,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -532,9 +532,9 @@
       "away_team": "Ecuador",
       "date": "2026-06-14T23:00:00Z",
       "odds": {
-        "home": 3.72,
-        "draw": 2.81,
-        "away": 2.45,
+        "home": 3.65,
+        "draw": 2.82,
+        "away": 2.47,
         "totals": {
           "line": 1.75,
           "over": 1.82,
@@ -558,8 +558,8 @@
         "away": 5.8,
         "totals": {
           "line": 2.5,
-          "over": 1.71,
-          "under": 1.85
+          "over": 1.72,
+          "under": 1.83
         }
       },
       "actual_score": null,
@@ -679,9 +679,9 @@
       "away_team": "Sweden",
       "date": "2026-06-20T17:00:00Z",
       "odds": {
-        "home": 1.66,
-        "draw": 3.85,
-        "away": 5.25,
+        "home": 1.65,
+        "draw": 3.95,
+        "away": 5.3,
         "totals": {
           "line": 2.5,
           "over": 1.79,
@@ -700,13 +700,13 @@
       "away_team": "Japan",
       "date": "2026-06-21T04:00:00Z",
       "odds": {
-        "home": 4.9,
+        "home": 5.1,
         "draw": 3.6,
-        "away": 1.75,
+        "away": 1.74,
         "totals": {
           "line": 2.5,
-          "over": 2.06,
-          "under": 1.56
+          "over": 2.08,
+          "under": 1.55
         }
       },
       "actual_score": null,
@@ -784,13 +784,13 @@
       "away_team": "New Zealand",
       "date": "2026-06-16T01:00:00Z",
       "odds": {
-        "home": 1.92,
+        "home": 1.91,
         "draw": 3.47,
-        "away": 4.46,
+        "away": 4.47,
         "totals": {
           "line": 2.25,
           "over": 2.09,
-          "under": 1.81
+          "under": 1.82
         }
       },
       "actual_score": null,
@@ -910,9 +910,9 @@
       "away_team": "Uruguay",
       "date": "2026-06-15T22:00:00Z",
       "odds": {
-        "home": 7.9,
-        "draw": 4.45,
-        "away": 1.47,
+        "home": 8.4,
+        "draw": 4.55,
+        "away": 1.44,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -1015,9 +1015,9 @@
       "away_team": "Senegal",
       "date": "2026-06-16T19:00:00Z",
       "odds": {
-        "home": 1.48,
-        "draw": 4.45,
-        "away": 7.6,
+        "home": 1.49,
+        "draw": 4.4,
+        "away": 7.5,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -1414,9 +1414,9 @@
       "away_team": "Panama",
       "date": "2026-06-17T23:00:00Z",
       "odds": {
-        "home": 2.06,
-        "draw": 3.62,
-        "away": 3.7,
+        "home": 2.05,
+        "draw": 3.64,
+        "away": 3.72,
         "totals": {
           "line": 2.5,
           "over": 1.9,
@@ -1519,13 +1519,13 @@
       "away_team": "Bosnia & Herzegovina",
       "date": "2026-06-12T19:00:00Z",
       "odds": {
-        "home": 1.83,
-        "draw": 3.65,
-        "away": 4.6,
+        "home": 1.78,
+        "draw": 3.7,
+        "away": 4.9,
         "totals": {
           "line": 2.5,
-          "over": 2.2,
-          "under": 1.64
+          "over": 2.18,
+          "under": 1.66
         }
       },
       "actual_score": null,
